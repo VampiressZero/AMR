@@ -1,0 +1,18 @@
+﻿@page
+@model AMR_Project.Pages.LogoutModel
+@{
+}
+
+<h1>Страница выхода</h1>
+@{
+    if (User.Identity.IsAuthenticated)
+    {
+        <form asp-page="/Logout" method="post">
+            <button>Нажмите здесь, чтобы выйти</button>
+        </form>
+    }
+    else
+    {
+        <p>Вы успешно вышли.</p>
+    }
+}

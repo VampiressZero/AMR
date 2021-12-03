@@ -1,0 +1,20 @@
+﻿@page
+@model AMR_Project.Pages.RegisterModel
+@{
+}
+
+<h1 class="textReg">Регистрация</h1>
+
+<form method="post">
+    <div class="registration">
+        <h3>Никнейм</h3>
+        <input asp-for="Input.UserName" id="" placeholder="Введите никнейм">
+        <h3>Почта</h3>
+        <input asp-for="Input.Email" id="" placeholder="Введите почту">
+        <h3>Пароль</h3>
+        <input asp-for="Input.Password" id="" placeholder="Введите пароль">
+        <h3>Повторите пароль</h3>
+        <input asp-for="Input.PasswordConfirm" id="" placeholder="Повторите пароль">
+        <button type="submit">Зарегистрироваться</button>
+    </div>
+</form>

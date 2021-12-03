@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using AMR_Project.Models;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
 using System;
@@ -10,16 +11,17 @@ namespace AMR_Project.Pages
 {
     public class IndexModel : PageModel
     {
-        private readonly ILogger<IndexModel> _logger;
+        private readonly ApplicationContext _db;
 
-        public IndexModel(ILogger<IndexModel> logger)
+        public IndexModel(ApplicationContext db)
         {
-            _logger = logger;
+            _db = db;
         }
 
+        public List<Anime> Animes { get; set; }
         public void OnGet()
         {
-
+            Animes = _db.Animes.ToList();
         }
     }
 }

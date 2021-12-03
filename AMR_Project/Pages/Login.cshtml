@@ -1,0 +1,16 @@
+﻿@page
+@model AMR_Project.Pages.LoginModel
+@{
+}
+
+<h1 class="textReg">Авторизация</h1>
+
+<form method="post">
+    <div class="authorization">
+        <h3>Никнейм</h3>
+        <input asp-for="Input.UserName" id="" placeholder="Введите никнейм">
+        <h3>Пароль</h3>
+        <input asp-for="Input.Password" id="" placeholder="Введите пароль">
+        <button type="submit">Войти</button>
+    </div>
+</form>

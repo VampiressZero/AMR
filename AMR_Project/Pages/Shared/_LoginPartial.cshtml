@@ -1,0 +1,19 @@
+﻿@using AMR_Project.Models
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<User> SignInManager
+
+
+<div class="reg_links">
+    @if (SignInManager.IsSignedIn(User))
+    {
+        <a class="reg_link" asp-page="Profile">Профиль</a>
+        <form asp-page="Logout">
+            <button class="reg_link" type="submit">Выйти</button>
+        </form>
+    }
+    else
+    {
+        <a class="reg_link" asp-page="Login">Вход</a>
+        <a class="reg_link" asp-page="Register">Регистрация</a>
+    }
+</div>

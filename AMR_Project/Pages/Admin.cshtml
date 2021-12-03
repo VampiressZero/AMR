@@ -1,0 +1,27 @@
+﻿@page
+@model AMR_Project.Pages.AdminModel
+@{
+}
+<form method="post" enctype="multipart/form-data">
+    <input asp-for="Input.Name" placeholder="Name" />
+    <input asp-for="Input.Studio" placeholder="Studio" />
+    <input asp-for="Input.Description" placeholder="Description" />
+    <input asp-for="Input.CountEpisodes" placeholder="CountEpisodes" />
+    <input asp-for="Input.Status" placeholder="Status" />
+    <select asp-for="Input.Genres">
+        <option disabled>Genres</option>
+        <option></option>
+    </select>
+    <input asp-for="Input.MainImage" placeholder="MainImage" />
+    <input asp-for="Input.Year" placeholder="Year" />
+    <select>
+        <option disabled>DubStudio</option>
+        <option></option>
+    </select>
+    <select>
+        <option disabled>Tags</option>
+        <option></option>
+    </select>
+    <input asp-for="Input.AgeRating" placeholder="AgeRating" />
+    <button type="submit">Add</button>
+</form>

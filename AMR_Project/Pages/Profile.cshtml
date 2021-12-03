@@ -1,0 +1,21 @@
+﻿@page
+@model AMR_Project.Pages.ProfileModel
+@{
+}
+
+<h1 class="textReg">Профиль</h1>
+<div class="infoAccount">
+    <h3>Никнейм: </h3>
+    <h3>@Model.CurrentUser.UserName</h3>
+    <h3>Почта: </h3>
+    <h3>@Model.CurrentUser.Email</h3>
+    <form method="post" class="infoAccount">
+        <h3>Текущий пароль: </h3>
+        <input asp-for="Input.CurrentPassword">
+        <h3>Новый пароль: </h3>
+        <input asp-for="Input.NewPassword">
+        <h3>Повторите новый пароль: </h3>
+        <input asp-for="Input.NewPasswordConfirm">
+        <button type="submit">Сменить пароль</button>
+    </form>
+</div>
