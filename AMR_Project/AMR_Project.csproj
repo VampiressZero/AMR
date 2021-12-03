@@ -4,4 +4,29 @@
     <TargetFramework>net5.0</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <None Include="wwwroot\css\style.css" />
+    <None Include="wwwroot\fonts\Butler_Black.otf" />
+    <None Include="wwwroot\fonts\Butler_Bold.otf" />
+    <None Include="wwwroot\fonts\Butler_ExtraBold.otf" />
+    <None Include="wwwroot\fonts\Butler_Light.otf" />
+    <None Include="wwwroot\fonts\Butler_Medium.otf" />
+    <None Include="wwwroot\fonts\Butler_Regular.otf" />
+    <None Include="wwwroot\fonts\Butler_Ultra_Light.otf" />
+    <None Include="wwwroot\fonts\COPYRIGHT.txt" />
+    <None Include="wwwroot\fonts\LICENSE.txt" />
+    <None Include="wwwroot\html\anime.html" />
+    <None Include="wwwroot\html\authorization.html" />
+    <None Include="wwwroot\html\index.html" />
+    <None Include="wwwroot\html\profile.html" />
+    <None Include="wwwroot\html\reg.html" />
+    <None Include="wwwroot\img\38524.jpg" />
+    <None Include="wwwroot\img\40834.jpg" />
+    <None Include="wwwroot\img\45576.jpg" />
+    <None Include="wwwroot\img\47790.jpg" />
+    <None Include="wwwroot\img\48569.jpg" />
+    <None Include="wwwroot\img\5114.jpg" />
+    <None Include="wwwroot\img\9253.jpg" />
+  </ItemGroup>
+
 </Project>
