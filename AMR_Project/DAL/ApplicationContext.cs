@@ -1,11 +1,12 @@
-﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+﻿using AMR_Project.Models;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace AMR_Project.Models
+namespace AMR_Project.DAL
 {
     public class ApplicationContext : IdentityDbContext<User>
     {

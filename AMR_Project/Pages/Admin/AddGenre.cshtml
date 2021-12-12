@@ -1,0 +1,11 @@
+﻿@page
+@model AMR_Project.Pages.Admin.AddGenreModel
+@{
+}
+<form method="post">
+    <label asp-for="Input.Name"></label><br />
+    <input asp-for="Input.Name" /><br />
+    <label asp-for="Input.Description"></label><br />
+    <textarea asp-for="Input.Description"></textarea><br />
+    <button type="submit">Add</button>
+</form>

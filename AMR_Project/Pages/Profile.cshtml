@@ -2,8 +2,17 @@
 @model AMR_Project.Pages.ProfileModel
 @{
 }
-
+@using Microsoft.AspNetCore.Identity;
+@using AMR_Project.Models; 
+@inject UserManager<User> userManager;
 <h1 class="textReg">Профиль</h1>
+@{ 
+    var user = await userManager.GetUserAsync(User);
+    if (user.UserName.Equals("Admin"))
+    {
+        <a asp-page="/Admin/Admin">Admin</a>
+    }
+}
 <div class="infoAccount">
     <h3>Никнейм: </h3>
     <h3>@Model.CurrentUser.UserName</h3>

@@ -1,3 +1,4 @@
+using AMR_Project.DAL;
 using AMR_Project.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;

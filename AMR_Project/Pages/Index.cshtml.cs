@@ -1,4 +1,5 @@
 ﻿using AMR_Project.Models;
+using AMR_Project.DAL;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;

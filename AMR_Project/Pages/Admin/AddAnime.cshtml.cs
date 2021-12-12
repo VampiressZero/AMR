@@ -5,17 +5,20 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using AMR_Project.Models;
+using AMR_Project.DAL;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace AMR_Project.Pages
+namespace AMR_Project.Pages.Admin
 {
-    public class AdminModel : PageModel
+    [Authorize]
+    public class AddAnimeModel : PageModel
     {
         private readonly ApplicationContext _db;
-
-        public AdminModel(ApplicationContext db)
+        
+        public AddAnimeModel(ApplicationContext db)
         {
             _db = db;
         }
@@ -37,7 +40,7 @@ namespace AMR_Project.Pages
             [Required]
             [DataType(DataType.Text)]
             public String Status { get; set; }
-            public List<Genre> Genres { get; set; }
+            public List<String> Genres { get; set; }
 
             [DataType(DataType.Upload)]
             public IFormFile MainImage { get; set; }
@@ -51,20 +54,40 @@ namespace AMR_Project.Pages
         }
         [BindProperty]
         public InputModel Input { get; set; }
+
+        public List<Genre> Genres { get; set; }
         public void OnGet()
         {
+            Genres = _db.Genres.ToList();
         }
         public void OnPost()
         {
-            var anime = new Anime {Name = Input.Name,
-                                   Studio = Input.Studio,
-                                   Description = Input.Description,
-                                   CountEpisodes = Input.CountEpisodes,
-                                   Status = Input.Status,
-                                   Genres = Input.Genres,
-                                   Year = Input.Year,
-                                   AgeRating = Input.AgeRating
+            Genres = _db.Genres.ToList();
+
+            var anime = new Anime
+            {
+                Name = Input.Name,
+                Studio = Input.Studio,
+                Description = Input.Description,
+                CountEpisodes = Input.CountEpisodes,
+                Genres = new List<Genre>(),
+                Status = Input.Status,
+                Year = Input.Year,
+                AgeRating = Input.AgeRating
             };
+
+            for(Int32 i = 0; i < Input.Genres.Count; i++)
+            {
+                for(Int32 j = 0; j < Genres.Count; j++)
+                {
+                    if (Input.Genres[i] == Genres[j].Name)
+                    {
+                        anime.Genres.Add(Genres[j]);
+                        break;
+                    }
+                }
+            }
+
             if (Input.MainImage != null)
             {
                 byte[] imageData = null;

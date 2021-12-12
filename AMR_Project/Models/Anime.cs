@@ -20,5 +20,7 @@ namespace AMR_Project.Models
         public List<DubStudio> DubStudios { get; set; }
         public List<Tag> Tags { get; set; }
         public String AgeRating { get; set; }
+        public Int32 Rating { get; set; }
+        public Int32 Views { get; set; }
     }
 }
