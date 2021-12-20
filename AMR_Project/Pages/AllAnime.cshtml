@@ -1,0 +1,91 @@
+﻿@page
+@model AMR_Project.Pages.AllAnimeModel
+@{
+}
+<div class="allAnimeFilter">
+    <div class="allAnime">
+        @{
+            var animes = Model.Animes.OrderByDescending(a => a.Rating).Select(a => a).ToList();
+            for (Int32 i = 0; i < animes.Count; i++)
+            {
+                <a>
+                    <img class="imgAnime"
+                         src="data:image/jpeg;base64,@(Convert.ToBase64String(animes[i].MainImage))"
+                         alt="@animes[i].Name"
+                         title="@animes[i].Name" />
+                </a>
+            }
+        }
+        @*<img class="imgAnime" src="img/38524.jpg">
+        <img class="imgAnime" src="img/40834.jpg">
+        <img class="imgAnime" src="img/45576.jpg">
+        <img class="imgAnime" src="img/5114.jpg">
+        <img class="imgAnime" src="img/9253.jpg">
+        <img class="imgAnime" src="img/47790.jpg">
+        <img class="imgAnime" src="img/48569.jpg">
+        <img class="imgAnime" src="img/38524.jpg">
+        <img class="imgAnime" src="img/40834.jpg">
+        <img class="imgAnime" src="img/45576.jpg">
+        <img class="imgAnime" src="img/5114.jpg">
+        <img class="imgAnime" src="img/9253.jpg">
+        <img class="imgAnime" src="img/47790.jpg">
+        <img class="imgAnime" src="img/48569.jpg">
+        <img class="imgAnime" src="img/38524.jpg">
+        <img class="imgAnime" src="img/40834.jpg">
+        <img class="imgAnime" src="img/45576.jpg">
+        <img class="imgAnime" src="img/5114.jpg">
+        <img class="imgAnime" src="img/9253.jpg">
+        <img class="imgAnime" src="img/47790.jpg">
+        <img class="imgAnime" src="img/48569.jpg">
+        <img class="imgAnime" src="img/38524.jpg">
+        <img class="imgAnime" src="img/40834.jpg">
+        <img class="imgAnime" src="img/45576.jpg">
+        <img class="imgAnime" src="img/5114.jpg">
+        <img class="imgAnime" src="img/9253.jpg">
+        <img class="imgAnime" src="img/47790.jpg">
+        <img class="imgAnime" src="img/48569.jpg">
+        <img class="imgAnime" src="img/38524.jpg">
+        <img class="imgAnime" src="img/40834.jpg">
+        <img class="imgAnime" src="img/45576.jpg">
+        <img class="imgAnime" src="img/5114.jpg">
+        <img class="imgAnime" src="img/9253.jpg">
+        <img class="imgAnime" src="img/47790.jpg">
+        <img class="imgAnime" src="img/48569.jpg">
+        <img class="imgAnime" src="img/38524.jpg">
+        <img class="imgAnime" src="img/40834.jpg">
+        <img class="imgAnime" src="img/45576.jpg">
+        <img class="imgAnime" src="img/5114.jpg">
+        <img class="imgAnime" src="img/9253.jpg">
+        <img class="imgAnime" src="img/47790.jpg">
+        <img class="imgAnime" src="img/48569.jpg">*@
+    </div>
+    <div class="filter">
+        <!-- <h2>Фильтр</h2> -->
+        <form action="">
+            <h3>Статус</h3>
+            <input type="checkbox" name="" id="">Онгоинг<span data-title="Произведение ещё выходит на данный момент" class="hint">?</span><br>
+            <input type="checkbox" name="" id="">Анонс<span class="hint">?</span><br>
+            <input type="checkbox" name="" id="">Вышел<span class="hint">?</span><br>
+            <h3>Тип</h3>
+            <input type="checkbox" name="" id="">ТВ сериал<span class="hint">?</span><br>
+            <input type="checkbox" name="" id="">Фильм<span class="hint">?</span><br>
+            <input type="checkbox" name="" id="">OVA<span class="hint">?</span><br>
+            <input type="checkbox" name="" id="">Спешл<span class="hint">?</span><br>
+            <input type="checkbox" name="" id="">ONA<span class="hint">?</span><br>
+            <h3>Рейтинг</h3>
+            <input type="checkbox" name="" id="">G<span class="hint">?</span><br>
+            <input type="checkbox" name="" id="">PG<span class="hint">?</span><br>
+            <input type="checkbox" name="" id="">PG-13<span class="hint">?</span><br>
+            <input type="checkbox" name="" id="">R-17<span class="hint">?</span><br>
+            <input type="checkbox" name="" id="">R+<span class="hint">?</span><br>
+            <h3>Жанры</h3>
+            <input type="checkbox" name="" id="">Сёнен<span class="hint">?</span><br>
+            <input type="checkbox" name="" id="">Сёдзе<span class="hint">?</span><br>
+            <input type="checkbox" name="" id="">Романтика<span class="hint">?</span><br>
+            <input type="checkbox" name="" id="">Детектив<span class="hint">?</span><br>
+            <input type="checkbox" name="" id="">Повседневность<span class="hint">?</span><br>
+
+
+        </form>
+    </div>
+</div>

@@ -1,4 +1,65 @@
-﻿@page
+﻿@page "{AnimeId}"
 @model AMR_Project.Pages.AnimeModel
 @{
 }
+@using AMR_Project.DAL 
+@inject ApplicationContext db 
+<div class="infoAnimeTitle">
+    <div>
+        <img class="PopularAnime imgAnime"
+        src="data:image/jpeg;base64,@(Convert.ToBase64String(Model.Anime.MainImage))"
+        alt="@Model.Anime.Name"
+        title="@Model.Anime.Name" />
+        <img class="imgAnimeTitle" src="img/38524.jpg" alt="Атака титанов" title="Атака титанов" srcset="">
+        <form action="">
+            <select class="listOfLists">
+                <option selected>Добавить в список</option>
+                <option value="">Смотрю</option>
+                <option value="">Брошено</option>
+                <option value="">Запланировано</option>
+                <option value="">Просмотренно</option>
+            </select>
+        </form>
+    </div>
+    <div>
+        <h1>@Model.Anime.Name</h1>
+        <hr>
+        <div class="columnInfoAnimeTitle">
+            <div class="nameInfoTitle">
+                <p>Тип</р>
+                <p>Эпизод</р>
+                <p>Статус </р>
+                <p> Жанр</р>
+                <p>Первоисточник</р>
+                <p> Студия</р>
+                <p> Рейтинг MPAA</р>
+                <p>Длительность</р>
+                <p>Озвучка</р>
+            </div>
+            <div>
+                <p>ТВ сериал</р> <!--Type-->
+                <p>@Model.Anime.CountEpisodes</р> <!--Episodes count-->
+                <p>@Model.Anime.Status</р> <!--Status-->
+                <p>
+                    @{
+                        //db.Entry(Model.Anime).Collection(a => a.Genres).Load();
+                        for (Int32 i = 0; i < Model.Anime.Genres.Count; i++)
+                        {
+                            <label>@Model.Anime.Genres[i].Name</label>
+                        }
+                    }
+                </р> <!--Genres-->
+                <p>Манга</р> <!--Source-->
+                <p>@Model.Anime.Studio</р> <!--Studio-->
+                <p>@Model.Anime.AgeRating</р> <!--Age rating-->
+                <p>~ 23 мин.</р> <!--An episode duration-->
+                <p>AniDUB, AniLibria, Onibaku Group, Студийная Банда, AniMaunt</р> <!--Dub studios-->
+            </div>
+        </div>
+    </div>
+</div>
+<div class="description">
+    <h2>Описание</h2>
+    <p>@Model.Anime.Description</p>
+</div>
+<video class="animeVideo" src="img/InShot_20210221_212759508.mp4" controls></video>

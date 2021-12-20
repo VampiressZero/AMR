@@ -99,8 +99,8 @@
                 var animesOngoings = Model.Animes.OrderByDescending(a => a.Year).Take(8).Select(a => a).ToList();
                 for (Int32 i = 0; i < animesOngoings.Count; i++)
                 {
-                    <a>
-                        <img class="imgОngoing"
+                    <a asp-page="Anime" asp-route-AnimeId="@animesOngoings[i].Id">
+                        <img class="imgAnime"
                              src="data:image/jpeg;base64,@(Convert.ToBase64String(animesOngoings[i].MainImage))"
                              alt="@animesOngoings[i].Name"
                              title="@animesOngoings[i].Name" />

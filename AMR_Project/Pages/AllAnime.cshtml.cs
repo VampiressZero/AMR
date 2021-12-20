@@ -2,26 +2,24 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using AMR_Project.DAL;
 using AMR_Project.Models;
+using AMR_Project.DAL;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace AMR_Project.Pages
 {
-    public class AnimeModel : PageModel
+    public class AllAnimeModel : PageModel
     {
         private readonly ApplicationContext _db;
-        public AnimeModel(ApplicationContext db)
+        public AllAnimeModel(ApplicationContext db)
         {
             _db = db;
         }
-        public Anime Anime { get; set; }
-        public void OnGet(Int32 AnimeId)
+        public List<Anime> Animes { get; set; }
+        public void OnGet()
         {
-            Anime = _db.Find<Anime>(AnimeId);
-            _db.Entry(Anime).Collection(a => a.Genres).Load();
-            var count = Anime.Genres.Count;
+            Animes = _db.Animes.ToList();
         }
     }
 }
