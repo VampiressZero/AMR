@@ -1,4 +1,4 @@
-﻿@page "{AnimeId}"
+﻿@page "/Animes/Anime/{AnimeId}"
 @model AMR_Project.Pages.AnimeModel
 @{
 }
@@ -6,11 +6,22 @@
 @inject ApplicationContext db 
 <div class="infoAnimeTitle">
     <div>
-        <img class="PopularAnime imgAnime"
-        src="data:image/jpeg;base64,@(Convert.ToBase64String(Model.Anime.MainImage))"
-        alt="@Model.Anime.Name"
-        title="@Model.Anime.Name" />
-        <img class="imgAnimeTitle" src="img/38524.jpg" alt="Атака титанов" title="Атака титанов" srcset="">
+        @{
+            if (Model.Anime.MainImage != null)
+            {
+                <img class="PopularAnime imgAnime"
+                     src="data:image/jpeg;base64,@(Convert.ToBase64String(Model.Anime.MainImage))"
+                     alt="@Model.Anime.Name"
+                     title="@Model.Anime.Name" />
+            }
+            else
+            {
+                <img class="PopularAnime imgAnime"
+                     alt="@Model.Anime.Name"
+                     title="@Model.Anime.Name" />
+            }
+        }
+
         <form action="">
             <select class="listOfLists">
                 <option selected>Добавить в список</option>
@@ -29,15 +40,16 @@
                 <p>Тип</р>
                 <p>Эпизод</р>
                 <p>Статус </р>
-                <p> Жанр</р>
+                <p>Жанр</р>
                 <p>Первоисточник</р>
-                <p> Студия</р>
-                <p> Рейтинг MPAA</р>
+                <p>Студия</р>
+                <p>Рейтинг MPAA</р>
                 <p>Длительность</р>
-                <p>Озвучка</р>
+                <p>Теги</р>
+                <p>Озвучка</p>
             </div>
             <div>
-                <p>ТВ сериал</р> <!--Type-->
+                <p>@Model.Anime.Type</р> <!--Type-->
                 <p>@Model.Anime.CountEpisodes</р> <!--Episodes count-->
                 <p>@Model.Anime.Status</р> <!--Status-->
                 <p>
@@ -48,12 +60,27 @@
                             <label>@Model.Anime.Genres[i].Name</label>
                         }
                     }
-                </р> <!--Genres-->
-                <p>Манга</р> <!--Source-->
+                    </р> <!--Genres-->
+                <p>@Model.Anime.Source</р> <!--Source-->
                 <p>@Model.Anime.Studio</р> <!--Studio-->
                 <p>@Model.Anime.AgeRating</р> <!--Age rating-->
-                <p>~ 23 мин.</р> <!--An episode duration-->
-                <p>AniDUB, AniLibria, Onibaku Group, Студийная Банда, AniMaunt</р> <!--Dub studios-->
+                <p>@Model.Anime.Duration</р> <!--An episode duration-->
+                <p>
+                    @{
+                        //db.Entry(Model.Anime).Collection(a => a.Genres).Load();
+                        for (Int32 i = 0; i < Model.Anime.Tags.Count; i++)
+                        {
+                            <label>@Model.Anime.Tags[i].Name</label>
+                        }
+                }</р> <!--Tags-->
+                <p>
+                @{
+                    //db.Entry(Model.Anime).Collection(a => a.Genres).Load();
+                    for (Int32 i = 0; i < Model.Anime.DubStudios.Count; i++)
+                    {
+                        <label>@Model.Anime.DubStudios[i].Name</label>
+                    }
+                }</р> <!--Dub studios-->
             </div>
         </div>
     </div>
@@ -62,4 +89,5 @@
     <h2>Описание</h2>
     <p>@Model.Anime.Description</p>
 </div>
-<video class="animeVideo" src="img/InShot_20210221_212759508.mp4" controls></video>
+<img class="imgAnimeTitle" src="~/img/38524.jpg" alt="Атака титанов" title="Атака титанов" srcset="">
+<video class="animeVideo" src="~/img/InShot_20210221_212759508.mp4" controls></video>

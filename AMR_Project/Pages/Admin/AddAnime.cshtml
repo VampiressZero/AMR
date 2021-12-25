@@ -9,6 +9,7 @@
     <input asp-for="Input.Description" placeholder="Description" /><br />
     <input asp-for="Input.CountEpisodes" placeholder="CountEpisodes" /><br />
     <input asp-for="Input.Status" placeholder="Status" /><br />
+
     <select asp-for="Input.Genres">
         <option disabled>Genres</option>
         @foreach(var g in Model.Genres)
@@ -16,16 +17,31 @@
                 <option>@g.Name</option>
             }
     </select><br />
+
     <input asp-for="Input.MainImage" placeholder="MainImage" /><br />
     <input asp-for="Input.Year" placeholder="Year" /><br />
-    <select>
+
+    <select asp-for="Input.DubStudios">
         <option disabled>DubStudio</option>
-        <option></option>
+        @foreach(var d in Model.DubStudios)
+            {
+                <option>@d.Name</option>
+            }
     </select><br />
-    <select>
+
+    <select asp-for="Input.Tags">
         <option disabled>Tags</option>
-        <option></option>
+        @foreach(var t in Model.Tags)
+            {
+                <option>@t.Name</option>
+            }
     </select><br />
+
     <input asp-for="Input.AgeRating" placeholder="AgeRating" /><br />
+    <input asp-for="Input.Source" placeholder="Source" /><br />
+    <input asp-for="Input.Type" placeholder="Type" /><br />
+    <input asp-for="Input.Duration" placeholder="Duration" /><br />
+
     <button type="submit">Add</button><br />
 </form>
+<a asp-page="/Admin/Admin">Return to admin page</a>

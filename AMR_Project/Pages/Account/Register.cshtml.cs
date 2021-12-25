@@ -54,7 +54,7 @@ namespace AMR_Project.Pages
                 if (result.Succeeded)
                 {
                     await _signInManager.SignInAsync(user, false);
-                    return RedirectToPage("Index");
+                    return RedirectToPage("/Index");
                 }
             }
             return Page();

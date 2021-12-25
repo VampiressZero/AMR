@@ -6,14 +6,14 @@
 <div class="reg_links">
     @if (SignInManager.IsSignedIn(User))
     {
-        <a class="reg_link" asp-page="Profile">Профиль</a>
-        <form asp-page="Logout">
+        <a class="reg_link" asp-page="/Account/Profile">Профиль</a>
+        <form asp-page="/Account/Logout">
             <button class="reg_link" type="submit">Выйти</button>
         </form>
     }
     else
     {
-        <a class="reg_link" asp-page="Login">Вход</a>
-        <a class="reg_link" asp-page="Register">Регистрация</a>
+        <a class="reg_link" asp-page="/Account/Login">Вход</a>
+        <a class="reg_link" asp-page="/Account/Register">Регистрация</a>
     }
 </div>

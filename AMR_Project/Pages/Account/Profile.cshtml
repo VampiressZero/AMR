@@ -1,4 +1,4 @@
-﻿@page
+﻿@page "/Profile"
 @model AMR_Project.Pages.ProfileModel
 @{
 }
@@ -10,7 +10,7 @@
     var user = await userManager.GetUserAsync(User);
     if (user.UserName.Equals("Admin"))
     {
-        <a asp-page="/Admin/Admin">Admin</a>
+        <a asp-page="/Admin/Admin">Admin page</a>
     }
 }
 <div class="infoAccount">

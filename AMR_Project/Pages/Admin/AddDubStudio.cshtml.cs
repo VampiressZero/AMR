@@ -10,11 +10,11 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace AMR_Project.Pages.Admin
 {
-    public class AddGenreModel : PageModel
+    public class AddDubStudioModel : PageModel
     {
         private readonly ApplicationContext _db;
 
-        public AddGenreModel(ApplicationContext db)
+        public AddDubStudioModel(ApplicationContext db)
         {
             _db = db;
         }
@@ -37,12 +37,11 @@ namespace AMR_Project.Pages.Admin
         }
         public IActionResult OnPost()
         {
-            var genre = new Genre
+            var dubStudio = new DubStudio
             {
-                Name = Input.Name,
-                Description = Input.Description
+                Name = Input.Name
             };
-            _db.Add(genre);
+            _db.Add(dubStudio);
             _db.SaveChanges();
             return RedirectToPage();
         }

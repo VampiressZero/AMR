@@ -10,11 +10,11 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace AMR_Project.Pages.Admin
 {
-    public class AddGenreModel : PageModel
+    public class AddTagModel : PageModel
     {
         private readonly ApplicationContext _db;
 
-        public AddGenreModel(ApplicationContext db)
+        public AddTagModel(ApplicationContext db)
         {
             _db = db;
         }
@@ -37,12 +37,12 @@ namespace AMR_Project.Pages.Admin
         }
         public IActionResult OnPost()
         {
-            var genre = new Genre
+            var tag = new Tag
             {
                 Name = Input.Name,
                 Description = Input.Description
             };
-            _db.Add(genre);
+            _db.Add(tag);
             _db.SaveChanges();
             return RedirectToPage();
         }

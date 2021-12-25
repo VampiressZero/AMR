@@ -9,5 +9,6 @@ namespace AMR_Project.Models
     {
         public Int32 Id { get; set; }
         public String Name { get; set; }
+        public List<Anime> Animes { get; set; }
     }
 }

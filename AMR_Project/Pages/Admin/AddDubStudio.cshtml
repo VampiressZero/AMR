@@ -1,12 +1,10 @@
 ﻿@page
-@model AMR_Project.Pages.Admin.AddGenreModel
+@model AMR_Project.Pages.Admin.AddDubStudioModel
 @{
 }
 <form method="post">
     <label asp-for="Input.Name"></label><br />
     <input asp-for="Input.Name" /><br />
-    <label asp-for="Input.Description"></label><br />
-    <textarea asp-for="Input.Description"></textarea><br />
     <button type="submit">Add</button>
 </form>
 <a asp-page="/Admin/Admin">Return to admin page</a>

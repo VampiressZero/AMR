@@ -21,6 +21,8 @@ namespace AMR_Project.Pages
         {
             Anime = _db.Find<Anime>(AnimeId);
             _db.Entry(Anime).Collection(a => a.Genres).Load();
+            _db.Entry(Anime).Collection(a => a.DubStudios).Load();
+            _db.Entry(Anime).Collection(a => a.Tags).Load();
             var count = Anime.Genres.Count;
         }
     }
