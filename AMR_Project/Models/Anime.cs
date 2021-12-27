@@ -21,7 +21,7 @@ namespace AMR_Project.Models
         public List<Tag> Tags { get; set; }
         public String AgeRating { get; set; }
         public Int32 Rating { get; set; }
-        public Int32 Views { get; set; }
+        public Int32 RatingPeopleCount { get; set; }
         public String Source { get; set; }
         public String Type { get; set; }
         public String Duration { get; set; }

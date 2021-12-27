@@ -17,13 +17,33 @@ namespace AMR_Project.Pages
             _db = db;
         }
         public Anime Anime { get; set; }
+        public Double AvgRating { get; set; }
         public void OnGet(Int32 AnimeId)
         {
             Anime = _db.Find<Anime>(AnimeId);
             _db.Entry(Anime).Collection(a => a.Genres).Load();
             _db.Entry(Anime).Collection(a => a.DubStudios).Load();
             _db.Entry(Anime).Collection(a => a.Tags).Load();
-            var count = Anime.Genres.Count;
+            if (Anime.RatingPeopleCount == 0)
+            {
+                AvgRating = 0;
+            }
+            else
+            {
+                AvgRating = Math.Round((Double)Anime.Rating / (Double)Anime.RatingPeopleCount, 2);
+            }
+        }
+        public IActionResult OnPost(Int32 AnimeId)
+        {
+            Anime = _db.Find<Anime>(AnimeId);
+            _db.Entry(Anime).Collection(a => a.Genres).Load();
+            _db.Entry(Anime).Collection(a => a.DubStudios).Load();
+            _db.Entry(Anime).Collection(a => a.Tags).Load();
+            var rate = Int32.Parse(Request.Form["Rate"]);
+            Anime.Rating += rate;
+            Anime.RatingPeopleCount += 1;
+            _db.SaveChanges();
+            return RedirectToPage();
         }
     }
 }

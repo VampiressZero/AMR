@@ -21,7 +21,10 @@
                      title="@Model.Anime.Name" />
             }
         }
-
+    <form method="post">
+        <input name="Rate" type="number" />
+        <button type="submit">Submit</button>
+    </form>
         <form action="">
             <select class="listOfLists">
                 <option selected>Добавить в список</option>
@@ -33,7 +36,7 @@
         </form>
     </div>
     <div>
-        <h1>@Model.Anime.Name</h1>
+        <h1>@Model.Anime.Name @Model.AvgRating</h1>
         <hr>
         <div class="columnInfoAnimeTitle">
             <div class="nameInfoTitle">
