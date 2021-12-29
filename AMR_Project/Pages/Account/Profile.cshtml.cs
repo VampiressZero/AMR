@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using AMR_Project.Models;
 using Microsoft.AspNetCore.Identity;
 using System.ComponentModel.DataAnnotations;
+using AMR_Project.DAL;
 
 namespace AMR_Project.Pages
 {
@@ -15,10 +16,12 @@ namespace AMR_Project.Pages
     public class ProfileModel : PageModel
     {
         private readonly UserManager<User> _userManager;
+        private readonly ApplicationContext _db;
         
-        public ProfileModel(UserManager<User> userManager)
+        public ProfileModel(UserManager<User> userManager, ApplicationContext db)
         {
             _userManager = userManager;
+            _db = db;
         }
         public class InputModel
         {
@@ -43,6 +46,11 @@ namespace AMR_Project.Pages
         public async Task OnGetAsync()
         {
             CurrentUser = await _userManager.GetUserAsync(User);
+            _db.Entry(CurrentUser).Collection(u => u.Lists).Load();
+            foreach(var l in CurrentUser.Lists)
+            {
+                _db.Entry(l).Collection(l => l.Animes).Load();
+            }
         }
         public async Task<IActionResult> OnPostAsync()
         {

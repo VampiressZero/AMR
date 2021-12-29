@@ -49,7 +49,19 @@ namespace AMR_Project.Pages
         {
             if (ModelState.IsValid)
             {
-                var user = new User { UserName = Input.UserName, Email = Input.Email };
+                var user = new User
+                {
+                    UserName = Input.UserName,
+                    Email = Input.Email,
+                    Lists
+                    = new List<ListAnimes> 
+                    {
+                        new ListAnimes { Name = "Watched" },
+                        new ListAnimes { Name = "Dropped" },
+                        new ListAnimes { Name = "Watching" },
+                        new ListAnimes { Name = "Planned" }
+                    }
+                };
                 var result = await _userManager.CreateAsync(user, Input.Password);
                 if (result.Succeeded)
                 {

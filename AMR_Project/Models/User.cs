@@ -8,6 +8,6 @@ namespace AMR_Project.Models
 {
     public class User : IdentityUser
     {
-
+        public List<ListAnimes> Lists { get; set; }
     }
 }

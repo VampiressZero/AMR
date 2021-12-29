@@ -1,4 +1,4 @@
-﻿@page "/Animes/Anime/{AnimeId}"
+﻿@page "/Anime/{AnimeId}"
 @model AMR_Project.Pages.AnimeModel
 @{
 }
@@ -21,22 +21,22 @@
                      title="@Model.Anime.Name" />
             }
         }
-    <form method="post">
-        <input name="Rate" type="number" />
-        <button type="submit">Submit</button>
-    </form>
-        <form action="">
-            <select class="listOfLists">
+        <form method="post">
+            <input name="Rate" type="number" />
+            <button type="submit">Submit</button>
+        </form>
+        <form method="post" asp-page-handler="Select">
+            <select name="selectList" class="listOfLists" onchange="this.form.submit()" ;>
                 <option selected>Добавить в список</option>
-                <option value="">Смотрю</option>
-                <option value="">Брошено</option>
-                <option value="">Запланировано</option>
-                <option value="">Просмотренно</option>
+                <option value="Watching">Смотрю</option>
+                <option value="Dropped">Брошено</option>
+                <option value="Planned">Запланировано</option>
+                <option value="Watched">Просмотренно</option>
             </select>
         </form>
     </div>
     <div>
-        <h1>@Model.Anime.Name @Model.AvgRating</h1>
+        <h1>@Model.Anime.Name Рейтинг: @Model.AvgRating Кол-во голосов: @Model.Anime.RatingPeopleCount</h1>
         <hr>
         <div class="columnInfoAnimeTitle">
             <div class="nameInfoTitle">
@@ -52,38 +52,37 @@
                 <p>Озвучка</p>
             </div>
             <div>
-                <p>@Model.Anime.Type</р> <!--Type-->
-                <p>@Model.Anime.CountEpisodes</р> <!--Episodes count-->
-                <p>@Model.Anime.Status</р> <!--Status-->
+                <p>@Model.Anime.Type</р>
+                <p>@Model.Anime.CountEpisodes</р>
+                <p>@Model.Anime.Status</р>
                 <p>
                     @{
-                        //db.Entry(Model.Anime).Collection(a => a.Genres).Load();
                         for (Int32 i = 0; i < Model.Anime.Genres.Count; i++)
                         {
                             <label>@Model.Anime.Genres[i].Name</label>
                         }
                     }
-                    </р> <!--Genres-->
-                <p>@Model.Anime.Source</р> <!--Source-->
-                <p>@Model.Anime.Studio</р> <!--Studio-->
-                <p>@Model.Anime.AgeRating</р> <!--Age rating-->
-                <p>@Model.Anime.Duration</р> <!--An episode duration-->
+                </р>
+                <p>@Model.Anime.Source</р>
+                <p>@Model.Anime.Studio</р>
+                <p>@Model.Anime.AgeRating</р>
+                <p>@Model.Anime.Duration</р>
                 <p>
                     @{
-                        //db.Entry(Model.Anime).Collection(a => a.Genres).Load();
                         for (Int32 i = 0; i < Model.Anime.Tags.Count; i++)
                         {
                             <label>@Model.Anime.Tags[i].Name</label>
                         }
-                }</р> <!--Tags-->
-                <p>
-                @{
-                    //db.Entry(Model.Anime).Collection(a => a.Genres).Load();
-                    for (Int32 i = 0; i < Model.Anime.DubStudios.Count; i++)
-                    {
-                        <label>@Model.Anime.DubStudios[i].Name</label>
                     }
-                }</р> <!--Dub studios-->
+                </р>
+                <p>
+                    @{
+                        for (Int32 i = 0; i < Model.Anime.DubStudios.Count; i++)
+                        {
+                            <label>@Model.Anime.DubStudios[i].Name</label>
+                        }
+                    }
+                </р>
             </div>
         </div>
     </div>
@@ -92,5 +91,4 @@
     <h2>Описание</h2>
     <p>@Model.Anime.Description</p>
 </div>
-<img class="imgAnimeTitle" src="~/img/38524.jpg" alt="Атака титанов" title="Атака титанов" srcset="">
 <video class="animeVideo" src="~/img/InShot_20210221_212759508.mp4" controls></video>

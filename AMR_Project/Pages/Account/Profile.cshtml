@@ -12,6 +12,14 @@
     {
         <a asp-page="/Admin/Admin">Admin page</a>
     }
+    foreach(var l in user.Lists)
+    {
+        <p>@l.Name</p>
+        foreach(var a in l.Animes)
+        {
+            <p>@a.Name</p>
+            }
+    }
 }
 <div class="infoAccount">
     <h3>Никнейм: </h3>
@@ -28,3 +36,4 @@
         <button type="submit">Сменить пароль</button>
     </form>
 </div>
+
