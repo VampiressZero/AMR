@@ -8,8 +8,6 @@ namespace AMR_Project.Models
     public class ScheduleAnime
     {
         public Int32 Id { get; set; }
-        public String DayOfTheWeek { get; set; }
-        public String Time { get; set; }
         public DateTime StartDate { get; set; }
     }
 }
