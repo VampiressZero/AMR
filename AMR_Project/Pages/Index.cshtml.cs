@@ -20,9 +20,13 @@ namespace AMR_Project.Pages
         }
 
         public List<Anime> Animes { get; set; }
+        public ScheduleAnime Schedule { get; set; }
         public void OnGet()
         {
             Animes = _db.Animes.ToList();
+            var anime = Animes.Find(a => a.Id == 13);
+            _db.Entry(anime).Reference(a => a.Schedule).Load();
+            Schedule = anime.Schedule;
         }
     }
 }

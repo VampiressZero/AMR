@@ -11,6 +11,7 @@ namespace AMR_Project.Models
         public String Name { get; set; }
         public String Studio { get; set; }
         public String Description { get; set; }
+        public Int32 CountEpisodesForNow { get; set; }
         public Int32 CountEpisodes { get; set; }
         public String Status { get; set; }
         public List<Genre> Genres { get; set; }
@@ -25,5 +26,7 @@ namespace AMR_Project.Models
         public String Source { get; set; }
         public String Type { get; set; }
         public String Duration { get; set; }
+        public List<ListAnimes> List { get; set; }
+        public ScheduleAnime Schedule { get; set; }
     }
 }

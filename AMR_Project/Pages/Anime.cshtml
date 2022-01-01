@@ -53,7 +53,7 @@
             </div>
             <div>
                 <p>@Model.Anime.Type</р>
-                <p>@Model.Anime.CountEpisodes</р>
+                <p>@Model.Anime.CountEpisodesForNow / @Model.Anime.CountEpisodes</р>
                 <p>@Model.Anime.Status</р>
                 <p>
                     @{
@@ -91,4 +91,4 @@
     <h2>Описание</h2>
     <p>@Model.Anime.Description</p>
 </div>
-<video class="animeVideo" src="~/img/InShot_20210221_212759508.mp4" controls></video>
+<video class="animeVideo" src="~/img/InShot_20210221_212759508.mp4" controls repeat></video>

@@ -4,14 +4,16 @@ using AMR_Project.DAL;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace AMR_Project.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
-    partial class ApplicationContextModelSnapshot : ModelSnapshot
+    [Migration("20220101153737_AnimeListProperty")]
+    partial class AnimeListProperty
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -32,9 +34,6 @@ namespace AMR_Project.Migrations
                     b.Property<int>("CountEpisodes")
                         .HasColumnType("int");
 
-                    b.Property<int>("CountEpisodesForNow")
-                        .HasColumnType("int");
-
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
 
@@ -53,9 +52,6 @@ namespace AMR_Project.Migrations
                     b.Property<int>("RatingPeopleCount")
                         .HasColumnType("int");
 
-                    b.Property<int?>("ScheduleId")
-                        .HasColumnType("int");
-
                     b.Property<string>("Source")
                         .HasColumnType("nvarchar(max)");
 
@@ -72,8 +68,6 @@ namespace AMR_Project.Migrations
                         .HasColumnType("int");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("ScheduleId");
 
                     b.ToTable("Animes");
                 });
@@ -129,27 +123,6 @@ namespace AMR_Project.Migrations
                     b.HasIndex("UserId");
 
                     b.ToTable("ListAnimes");
-                });
-
-            modelBuilder.Entity("AMR_Project.Models.ScheduleAnime", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("DayOfTheWeek")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("StartDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Time")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("ScheduleAnimes");
                 });
 
             modelBuilder.Entity("AMR_Project.Models.Tag", b =>
@@ -424,15 +397,6 @@ namespace AMR_Project.Migrations
                     b.HasKey("UserId", "LoginProvider", "Name");
 
                     b.ToTable("AspNetUserTokens");
-                });
-
-            modelBuilder.Entity("AMR_Project.Models.Anime", b =>
-                {
-                    b.HasOne("AMR_Project.Models.ScheduleAnime", "Schedule")
-                        .WithMany()
-                        .HasForeignKey("ScheduleId");
-
-                    b.Navigation("Schedule");
                 });
 
             modelBuilder.Entity("AMR_Project.Models.ListAnimes", b =>

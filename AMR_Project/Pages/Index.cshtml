@@ -35,71 +35,88 @@
 <div class="scheduleAndOngoings">
     <div class="schedule">
         <h3>Расписание</h3>
-        <!-- <ul>
-        <li class="dayWeek">
-            <span>Понедельник</span>
-            <ul>
-                <li class="scheduleAnime">efd</li>
-                <li class="scheduleAnime">dsc</li>
-                <li class="scheduleAnime">ds</li>
-                <li class="scheduleAnime">ds</li>
-                <li class="scheduleAnime">sdc</li>
+        <div class="WeekDay">
+            <span class="nameWeekDay">Понедельник</span>
+            <ul class="ongoingsWeekDay displayNone">
+                @{ var list = Model.Animes.Where(a => a.Schedule == null).Select(a => a).ToList();
+                    <p>@list.Count @Model.Animes.Count</p>
+                    <p>@Model.Schedule.Id</p>
+                    @*var list1 = Model.Animes.Where(a => a.Schedule.DayOfTheWeek == "Monday").Select(a => a).ToList();
+                    <p>@list1.Count</p>*@
+                    @*for (Int32 i = 0; i < list.Count; i++)
+                    {
+                        <li class="ongoingsWeekDay-item" title="">
+                            <img class="roundPicture" src="data:image/jpeg;base64,@(Convert.ToBase64String(list[i].MainImage))">
+                            <p>@list[i].Name</p>
+                            <p>@(list[i].CountEpisodesForNow + 1) <br> 
+                            (@list[i].Schedule.StartDate.ToLongDateString() @list[i].Schedule.StartDate.ToShortTimeString() @list[i].Schedule.Time)</p>
+                        </li>
+                    }*@
+                }
             </ul>
-        </li>
+            <span class="nameWeekDay">Вторник</span>
+            <ul class="ongoingsWeekDay displayNone">
 
-        <li class="dayWeek">
-            <span>Вторник</span>
-            <ul>
-                <li class="scheduleAnime">sdc</li>
-                <li class="scheduleAnime">sdx</li>
-                <li class="scheduleAnime">sd</li>
-                <li class="scheduleAnime">ds</li>
-                <li class="scheduleAnime">ds</li>
+                <li class="ongoingsWeekDay-item" title="Реикарнация">
+                    <img class="roundPicture" src="img/45576.jpg" alt="Реикарнация" title="Реикарнация">
+                    <p>Реинкарнация безработного: История о приключениях в другом мире</p>
+                    <p>10 серия <br> (2 янв. 17:15)</p>
+                </li>
+                <li class="ongoingsWeekDay-item" title="Реикарнация">
+                    <img class="roundPicture" src="img/45576.jpg" alt="Реикарнация" title="Реикарнация">
+                    <p>Реинкарнация безработного: История о приключениях в другом мире</p>
+                    <p>10 серия <br> (2 янв. 17:15)</p>
+                </li>
+                <li class="ongoingsWeekDay-item">
+                    <img class="roundPicture" src="img/38524.jpg" alt="Атака титанов" title="Атака титанов">
+                    <p>Атака титанов</p>
+                    <p>10 серия <br> (2 янв. 17:15)</p>
+                </li>
+                <li class="ongoingsWeekDay-item">hjk</li>
+                <li class="ongoingsWeekDay-item">hufeijk</li>
+                <li class="ongoingsWeekDay-item">hhjk</li>
             </ul>
-        </li>
-        <li class="dayWeek">
-            <span>Среда</span>
-            <ul>
-                <li class="scheduleAnime"></li>
-                <li class="scheduleAnime"></li>
-                <li class="scheduleAnime"></li>
-                <li class="scheduleAnime"></li>
-                <li class="scheduleAnime"></li>
+            <span class="nameWeekDay">Среда</span>
+            <ul class="ongoingsWeekDay displayNone">
+                <li class="ongoingsWeekDay-item">frgt</li>
+                <li class="ongoingsWeekDay-item">frgth</li>
+                <li class="ongoingsWeekDay-item">sdfgh</li>
+                <li class="ongoingsWeekDay-item">er</li>
+                <li class="ongoingsWeekDay-item">dfg</li>
             </ul>
-        </li> -->
-        <!-- <li class="dayWeek">
-        <ul>
-            <li class="scheduleAnime"></li>
-            <li class="scheduleAnime"></li>
-            <li class="scheduleAnime"></li>
-            <li class="scheduleAnime"></li>
-            <li class="scheduleAnime"></li>
-        </li>
-    <li class="dayWeek">
-        <ul>
-            <li class="scheduleAnime"></li>
-            <li class="scheduleAnime"></li>
-            <li class="scheduleAnime"></li>
-            <li class="scheduleAnime"></li>
-            <li class="scheduleAnime"></li>
-        </li>
-    <li class="dayWeek">
-        <ul>
-            <li class="scheduleAnime"></li>
-            <li class="scheduleAnime"></li>
-            <li class="scheduleAnime"></li>
-            <li class="scheduleAnime"></li>
-            <li class="scheduleAnime"></li>
-        </li>
-    <li class="dayWeek">
-        <ul>
-            <li class="scheduleAnime"></li>
-            <li class="scheduleAnime"></li>
-            <li class="scheduleAnime"></li>
-            <li class="scheduleAnime"></li>
-            <li class="scheduleAnime"></li>
-        </li>
-    </ul>-->
+            <span class="nameWeekDay">Четверг</span>
+            <ul class="ongoingsWeekDay displayNone">
+                <li class="ongoingsWeekDay-item">fglkj;l</li>
+                <li class="ongoingsWeekDay-item">fglkj;l</li>
+                <li class="ongoingsWeekDay-item">fglkj;l</li>
+                <li class="ongoingsWeekDay-item">fglkj;l</li>
+                <li class="ongoingsWeekDay-item">fglkj;l</li>
+            </ul>
+            <span class="nameWeekDay">Пятница</span>
+            <ul class="ongoingsWeekDay displayNone">
+                <li class="ongoingsWeekDay-item">fglkj;l</li>
+                <li class="ongoingsWeekDay-item">fglkj;l</li>
+                <li class="ongoingsWeekDay-item">fglkj;l</li>
+                <li class="ongoingsWeekDay-item">fglkj;l</li>
+                <li class="ongoingsWeekDay-item">fglkj;l</li>
+            </ul>
+            <span class="nameWeekDay">Суббота</span>
+            <ul class="ongoingsWeekDay displayNone">
+                <li class="ongoingsWeekDay-item">fglkj;l</li>
+                <li class="ongoingsWeekDay-item">fglkj;l</li>
+                <li class="ongoingsWeekDay-item">fglkj;l</li>
+                <li class="ongoingsWeekDay-item">fglkj;l</li>
+                <li class="ongoingsWeekDay-item">fglkj;l</li>
+            </ul>
+            <span class="nameWeekDay">Воскресенье</span>
+            <ul class="ongoingsWeekDay displayNone">
+                <li class="ongoingsWeekDay-item">fglkj;l</li>
+                <li class="ongoingsWeekDay-item">fglkj;l</li>
+                <li class="ongoingsWeekDay-item">fglkj;l</li>
+                <li class="ongoingsWeekDay-item">fglkj;l</li>
+                <li class="ongoingsWeekDay-item">fglkj;l</li>
+            </ul>
+        </div>
     </div>
     <div class="ongoings">
         <h2 class="textOngoing">Онгоинги</h2>
@@ -108,24 +125,24 @@
                 var animesOngoings = Model.Animes.OrderByDescending(a => a.Year).Take(8).Select(a => a).ToList();
                 for (Int32 i = 0; i < animesOngoings.Count; i++)
                 {
-                        <a asp-page="Anime" asp-route-AnimeId="@animesOngoings[i].Id">
-                            @if (animesOngoings[i].MainImage != null)
-                            {
-                                <img class="imgAnime"
-                                     src="data:image/jpeg;base64,@(Convert.ToBase64String(animesOngoings[i].MainImage))"
-                                     alt="@animesOngoings[i].Name"
-                                     title="@animesOngoings[i].Name" />
-                            }
-                            else
-                            {
-                                <img class="imgAnime"
-                                     alt="@animesOngoings[i].Name"
-                                     title="@animesOngoings[i].Name" />
-                            }
-                        </a>
+                    <a asp-page="Anime" asp-route-AnimeId="@animesOngoings[i].Id">
+                        @if (animesOngoings[i].MainImage != null)
+                        {
+                            <img class="imgAnime"
+                                 src="data:image/jpeg;base64,@(Convert.ToBase64String(animesOngoings[i].MainImage))"
+                                 alt="@animesOngoings[i].Name"
+                                 title="@animesOngoings[i].Name" />
+                        }
+                        else
+                        {
+                            <img class="imgAnime"
+                                 alt="@animesOngoings[i].Name"
+                                 title="@animesOngoings[i].Name" />
+                        }
+                    </a>
                 }
             }
         </div>
     </div>
-</div>
+    </div>
 
