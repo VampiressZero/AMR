@@ -5,7 +5,7 @@ let //ongoingsWeekDayItem = document.querySelectorAll(".ongoingsWeekDay-item"),
     nameWeekDay = document.querySelectorAll(".nameWeekDay");
 divWeekDay.addEventListener('click', function(event){
     let target = event.target;
-    if (target && target.tagName == 'SPAN'){
+    if (target && target.classList.contains('nameWeekDay')){
         for (let i = 0; i < nameWeekDay.length; i++){
             if (target == nameWeekDay[i]  && ongoingsWeekDay[i].classList.contains('displayNone')){
                 ongoingsWeekDay[i].classList.remove('displayNone');

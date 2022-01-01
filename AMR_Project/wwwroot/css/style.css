@@ -98,7 +98,7 @@ a{
 .scheduleAndOngoings{
     margin-top: 75px;
     display: grid;
-    grid-template-columns: 325px auto;
+    grid-template-columns: 350px auto;
     gap: 25px;
 }
 
@@ -126,14 +126,25 @@ a{
 
 .ongoingsWeekDay{
     margin-top: 0px;
-    margin-bottom:  0px;
-
 }
 .ongoingsWeekDay-item{
     list-style-type: none;
+    padding: 5px 0px;
+    display: grid;
+    text-align: left;
+    grid-template-columns: 50px auto 105px;
+    margin-left: -25px;
+    column-gap: 10px;
+    align-items:center;
 }
 
-
+.roundPicture{
+    object-fit: cover;
+    width: 50px;
+    height: 50px;
+    float: left;
+    border-radius: 50%;
+}
 
 
 
