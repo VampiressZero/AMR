@@ -76,6 +76,7 @@ a{
     width: 1200px;;
     margin: auto;
     margin-bottom: 50px;
+    margin-top: 25px;
 }
 
 .textPopular{
@@ -130,13 +131,15 @@ a{
 
 .ongoingsWeekDay{
     margin-top: 0px;
+    font-size: 16px;
 }
 .ongoingsWeekDay-item{
+    box-sizing:border-box;
     list-style-type: none;
     padding: 5px 0px;
     display: grid;
     text-align: left;
-    grid-template-columns: 50px auto 105px;
+    grid-template-columns: 50px 150px 110px;
     margin-left: -25px;
     column-gap: 10px;
     align-items:center;
@@ -251,10 +254,34 @@ a{
 .nameList-item{
     list-style-type: none;
 }
-
-
-
-
+.menuLists{
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+.menuLists-item{
+    background: #9C99EC;
+    padding: 12px 35px;
+    border-right: 2px solid #7673D9;
+}
+.menuLists-item:last-child{
+    border-right: none;
+}
+.selectList{
+    box-sizing:border-box;
+    list-style-type: none;
+    padding: 5px 0px;
+    display: grid;
+    text-align: left;
+    grid-template-columns: 50px auto 110px;
+    column-gap: 25px;
+    align-items:center;
+}
+.selectList button{
+    background:none;
+    border: none;
+}
 
 
 
