@@ -24,13 +24,9 @@ namespace AMR_Project.Pages
         public void OnGet(Int32 AnimeId)
         {
             Anime = _db.Find<Anime>(AnimeId);
-            foreach(var c in _db.Entry(Anime).Collections)
-            {
-                c.Load();
-            }
-            //_db.Entry(Anime).Collection(a => a.Genres).Load();
-            //_db.Entry(Anime).Collection(a => a.DubStudios).Load();
-            //_db.Entry(Anime).Collection(a => a.Tags).Load();
+            _db.Entry(Anime).Collection(a => a.Genres).Load();
+            _db.Entry(Anime).Collection(a => a.DubStudios).Load();
+            _db.Entry(Anime).Collection(a => a.Tags).Load();
             if (Anime.RatingPeopleCount == 0)
             {
                 AvgRating = 0;

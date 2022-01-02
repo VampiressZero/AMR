@@ -34,7 +34,7 @@ namespace AMR_Project.Pages.Admin
             [Required]
             [DataType(DataType.MultilineText)]
             public String Description { get; set; }
-
+            public Int32 CountEpidodesForNow { get; set; }
             public Int32 CountEpisodes { get; set; }
 
             [Required]
@@ -62,6 +62,8 @@ namespace AMR_Project.Pages.Admin
 
             [DataType(DataType.Text)]
             public String Duration { get; set; }
+            [DataType(DataType.DateTime)]
+            public DateTime StartDate { get; set; }
         }
         [BindProperty]
         public InputModel Input { get; set; }
@@ -86,6 +88,7 @@ namespace AMR_Project.Pages.Admin
                 Name = Input.Name,
                 Studio = Input.Studio,
                 Description = Input.Description,
+                CountEpisodesForNow = Input.CountEpidodesForNow,
                 CountEpisodes = Input.CountEpisodes,
                 Genres = new List<Genre>(),
                 Status = Input.Status,
@@ -95,7 +98,8 @@ namespace AMR_Project.Pages.Admin
                 AgeRating = Input.AgeRating,
                 Source = Input.Source,
                 Type = Input.Type,
-                Duration = Input.Duration
+                Duration = Input.Duration,
+                StartDate = Input.StartDate
             };
 
             for(Int32 i = 0; i < Input.Genres.Count; i++)

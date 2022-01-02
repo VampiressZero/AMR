@@ -23,10 +23,6 @@ namespace AMR_Project.Pages
         public void OnGet()
         {
             Animes = _db.Animes.ToList();
-            for(var i = 0; i< Animes.Count; i++)
-            {
-                _db.Entry(Animes[i]).Reference(a => a.Schedule).Load();
-            }
         }
     }
 }

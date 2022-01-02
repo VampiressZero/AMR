@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AMR_Project.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
-    [Migration("20220101191405_ScheduleAnimeFinished")]
-    partial class ScheduleAnimeFinished
+    [Migration("20220102124923_AnimeStartDateProperty")]
+    partial class AnimeStartDateProperty
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -55,11 +55,11 @@ namespace AMR_Project.Migrations
                     b.Property<int>("RatingPeopleCount")
                         .HasColumnType("int");
 
-                    b.Property<int?>("ScheduleId")
-                        .HasColumnType("int");
-
                     b.Property<string>("Source")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("StartDate")
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("Status")
                         .HasColumnType("nvarchar(max)");
@@ -74,8 +74,6 @@ namespace AMR_Project.Migrations
                         .HasColumnType("int");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("ScheduleId");
 
                     b.ToTable("Animes");
                 });
@@ -131,21 +129,6 @@ namespace AMR_Project.Migrations
                     b.HasIndex("UserId");
 
                     b.ToTable("ListAnimes");
-                });
-
-            modelBuilder.Entity("AMR_Project.Models.ScheduleAnime", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<DateTime>("StartDate")
-                        .HasColumnType("datetime2");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("ScheduleAnimes");
                 });
 
             modelBuilder.Entity("AMR_Project.Models.Tag", b =>
@@ -420,15 +403,6 @@ namespace AMR_Project.Migrations
                     b.HasKey("UserId", "LoginProvider", "Name");
 
                     b.ToTable("AspNetUserTokens");
-                });
-
-            modelBuilder.Entity("AMR_Project.Models.Anime", b =>
-                {
-                    b.HasOne("AMR_Project.Models.ScheduleAnime", "Schedule")
-                        .WithMany()
-                        .HasForeignKey("ScheduleId");
-
-                    b.Navigation("Schedule");
                 });
 
             modelBuilder.Entity("AMR_Project.Models.ListAnimes", b =>

@@ -29,7 +29,7 @@
                     }
                 </a>
             }
-         }
+        }
     </div>
 </div>
 <div class="scheduleAndOngoings">
@@ -39,15 +39,29 @@
             <span class="nameWeekDay">Понедельник</span>
             <ul class="ongoingsWeekDay displayNone">
                 @{
-                    var listMonday = Model.Animes.Where(a => a.Schedule != null).Where(a => a.Schedule.StartDate.DayOfWeek.ToString() == "Monday").Select(a => a).ToList();
+                    var listMonday = Model.Animes
+                        .Where(a => a.CountEpisodesForNow != a.CountEpisodes)
+                        .Where(a => (a.StartDate.Subtract(DateTime.Now).TotalDays < 7))
+                        .Where(a => a.StartDate.DayOfWeek.ToString() == "Monday")
+                        .Select(a => a)
+                        .ToList();
                     for (Int32 i = 0; i < listMonday.Count; i++)
                     {
                         <li class="ongoingsWeekDay-item" title="">
-                            <img class="roundPicture" src="data:image/jpeg;base64,@(Convert.ToBase64String(listMonday[i].MainImage))">
+                            <a asp-page="Anime" asp-route-AnimeId="@listMonday[i].Id">
+                                @if (listMonday[i].MainImage != null)
+                                {
+                                    <img class="roundPicture" src="data:image/jpeg;base64,@(Convert.ToBase64String(listMonday[i].MainImage))">
+                                }
+                                else
+                                {
+                                    <img class="roundPicture">
+                                }
+                            </a>
                             <p>@listMonday[i].Name</p>
                             <p>
                                 Серия @(listMonday[i].CountEpisodesForNow + 1)<br>
-                                (@listMonday[i].Schedule.StartDate.ToString("d MMM")) @listMonday[i].Schedule.StartDate.ToShortTimeString())
+                                (@listMonday[i].StartDate.ToString("d MMM")) @listMonday[i].StartDate.ToShortTimeString())
                             </p>
                         </li>
                     }
@@ -56,15 +70,29 @@
             <span class="nameWeekDay">Вторник</span>
             <ul class="ongoingsWeekDay displayNone">
                 @{
-                    var listTuesday = Model.Animes.Where(a => a.Schedule != null).Where(a => a.Schedule.StartDate.DayOfWeek.ToString() == "Tuesday").Select(a => a).ToList();
+                    var listTuesday = Model.Animes
+                        .Where(a => a.CountEpisodesForNow != a.CountEpisodes)
+                        .Where(a => (a.StartDate.Subtract(DateTime.Now).TotalDays < 7))
+                        .Where(a => a.StartDate.DayOfWeek.ToString() == "Tuesday")
+                        .Select(a => a)
+                        .ToList();
                     for (Int32 i = 0; i < listTuesday.Count; i++)
                     {
                         <li class="ongoingsWeekDay-item" title="">
-                            <img class="roundPicture" src="data:image/jpeg;base64,@(Convert.ToBase64String(listTuesday[i].MainImage))">
+                            <a asp-page="Anime" asp-route-AnimeId="@listTuesday[i].Id">
+                                @if (listTuesday[i].MainImage != null)
+                                {
+                                    <img class="roundPicture" src="data:image/jpeg;base64,@(Convert.ToBase64String(listTuesday[i].MainImage))">
+                                }
+                                else
+                                {
+                                    <img class="roundPicture">
+                                }
+                            </a>
                             <p>@listTuesday[i].Name</p>
                             <p>
                                 Серия @(listTuesday[i].CountEpisodesForNow + 1)<br>
-                                (@listTuesday[i].Schedule.StartDate.ToString("d MMM")) @listTuesday[i].Schedule.StartDate.ToShortTimeString())
+                                (@listTuesday[i].StartDate.ToString("d MMM")) @listTuesday[i].StartDate.ToShortTimeString())
                             </p>
                         </li>
                     }
@@ -73,15 +101,29 @@
             <span class="nameWeekDay">Среда</span>
             <ul class="ongoingsWeekDay displayNone">
                 @{
-                    var listWednesday = Model.Animes.Where(a => a.Schedule != null).Where(a => a.Schedule.StartDate.DayOfWeek.ToString() == "Wednesday").Select(a => a).ToList();
+                    var listWednesday = Model.Animes
+                        .Where(a => a.CountEpisodesForNow != a.CountEpisodes)
+                        .Where(a => (a.StartDate.Subtract(DateTime.Now).TotalDays < 7))
+                        .Where(a => a.StartDate.DayOfWeek.ToString() == "Wednesday")
+                        .Select(a => a)
+                        .ToList();
                     for (Int32 i = 0; i < listWednesday.Count; i++)
                     {
                         <li class="ongoingsWeekDay-item" title="">
-                            <img class="roundPicture" src="data:image/jpeg;base64,@(Convert.ToBase64String(listWednesday[i].MainImage))">
+                            <a asp-page="Anime" asp-route-AnimeId="@listWednesday[i].Id">
+                                @if (listWednesday[i].MainImage != null)
+                                {
+                                    <img class="roundPicture" src="data:image/jpeg;base64,@(Convert.ToBase64String(listWednesday[i].MainImage))">
+                                }
+                                else
+                                {
+                                    <img class="roundPicture">
+                                }
+                            </a>
                             <p>@listWednesday[i].Name</p>
                             <p>
                                 Серия @(listWednesday[i].CountEpisodesForNow + 1)<br>
-                                (@listWednesday[i].Schedule.StartDate.ToString("d MMM")) @listWednesday[i].Schedule.StartDate.ToShortTimeString())
+                                (@listWednesday[i].StartDate.ToString("d MMM")) @listWednesday[i].StartDate.ToShortTimeString())
                             </p>
                         </li>
                     }
@@ -90,15 +132,29 @@
             <span class="nameWeekDay">Четверг</span>
             <ul class="ongoingsWeekDay displayNone">
                 @{
-                    var listThursday = Model.Animes.Where(a => a.Schedule != null).Where(a => a.Schedule.StartDate.DayOfWeek.ToString() == "Thursday").Select(a => a).ToList();
+                    var listThursday = Model.Animes
+                        .Where(a => a.CountEpisodesForNow != a.CountEpisodes)
+                        .Where(a => (a.StartDate.Subtract(DateTime.Now).TotalDays < 7))
+                        .Where(a => a.StartDate.DayOfWeek.ToString() == "Thursday")
+                        .Select(a => a)
+                        .ToList();
                     for (Int32 i = 0; i < listThursday.Count; i++)
                     {
                         <li class="ongoingsWeekDay-item" title="">
-                            <img class="roundPicture" src="data:image/jpeg;base64,@(Convert.ToBase64String(listThursday[i].MainImage))">
+                            <a asp-page="Anime" asp-route-AnimeId="@listThursday[i].Id">
+                                @if (listThursday[i].MainImage != null)
+                                {
+                                    <img class="roundPicture" src="data:image/jpeg;base64,@(Convert.ToBase64String(listThursday[i].MainImage))">
+                                }
+                                else
+                                {
+                                    <img class="roundPicture">
+                                }
+                            </a>
                             <p>@listThursday[i].Name</p>
                             <p>
                                 Серия @(listThursday[i].CountEpisodesForNow + 1)<br>
-                                (@listThursday[i].Schedule.StartDate.ToString("d MMM")) @listThursday[i].Schedule.StartDate.ToShortTimeString())
+                                (@listThursday[i].StartDate.ToString("d MMM")) @listThursday[i].StartDate.ToShortTimeString())
                             </p>
                         </li>
                     }
@@ -107,15 +163,29 @@
             <span class="nameWeekDay">Пятница</span>
             <ul class="ongoingsWeekDay displayNone">
                 @{
-                    var listFriday = Model.Animes.Where(a => a.Schedule != null).Where(a => a.Schedule.StartDate.DayOfWeek.ToString() == "Friday").Select(a => a).ToList();
+                    var listFriday = Model.Animes
+                        .Where(a => a.CountEpisodesForNow != a.CountEpisodes)
+                        .Where(a => (a.StartDate.Subtract(DateTime.Now).TotalDays < 7))
+                        .Where(a => a.StartDate.DayOfWeek.ToString() == "Friday")
+                        .Select(a => a)
+                        .ToList();
                     for (Int32 i = 0; i < listFriday.Count; i++)
                     {
                         <li class="ongoingsWeekDay-item" title="">
-                            <img class="roundPicture" src="data:image/jpeg;base64,@(Convert.ToBase64String(listFriday[i].MainImage))">
+                            <a asp-page="Anime" asp-route-AnimeId="@listFriday[i].Id">
+                                @if (listFriday[i].MainImage != null)
+                                {
+                                    <img class="roundPicture" src="data:image/jpeg;base64,@(Convert.ToBase64String(listFriday[i].MainImage))">
+                                }
+                                else
+                                {
+                                    <img class="roundPicture">
+                                }
+                            </a>
                             <p>@listFriday[i].Name</p>
                             <p>
                                 Серия @(listFriday[i].CountEpisodesForNow + 1)<br>
-                                (@listFriday[i].Schedule.StartDate.ToString("d MMM")) @listFriday[i].Schedule.StartDate.ToShortTimeString())
+                                (@listFriday[i].StartDate.ToString("d MMM")) @listFriday[i].StartDate.ToShortTimeString())
                             </p>
                         </li>
                     }
@@ -124,15 +194,29 @@
             <span class="nameWeekDay">Суббота</span>
             <ul class="ongoingsWeekDay displayNone">
                 @{
-                    var listSaturday = Model.Animes.Where(a => a.Schedule != null).Where(a => a.Schedule.StartDate.DayOfWeek.ToString() == "Saturday").Select(a => a).ToList();
+                    var listSaturday = Model.Animes
+                        .Where(a => a.CountEpisodesForNow != a.CountEpisodes)
+                        .Where(a => (a.StartDate.Subtract(DateTime.Now).TotalDays < 7))
+                        .Where(a => a.StartDate.DayOfWeek.ToString() == "Saturday")
+                        .Select(a => a)
+                        .ToList();
                     for (Int32 i = 0; i < listSaturday.Count; i++)
                     {
                         <li class="ongoingsWeekDay-item" title="">
-                            <img class="roundPicture" src="data:image/jpeg;base64,@(Convert.ToBase64String(listSaturday[i].MainImage))">
+                            <a asp-page="Anime" asp-route-AnimeId="@listSaturday[i].Id">
+                                @if (listSaturday[i].MainImage != null)
+                                {
+                                    <img class="roundPicture" src="data:image/jpeg;base64,@(Convert.ToBase64String(listSaturday[i].MainImage))">
+                                }
+                                else
+                                {
+                                    <img class="roundPicture">
+                                }
+                            </a>
                             <p>@listSaturday[i].Name</p>
                             <p>
                                 Серия @(listSaturday[i].CountEpisodesForNow + 1)<br>
-                                (@listSaturday[i].Schedule.StartDate.ToString("d MMM")) @listSaturday[i].Schedule.StartDate.ToShortTimeString())
+                                (@listSaturday[i].StartDate.ToString("d MMM")) @listSaturday[i].StartDate.ToShortTimeString())
                             </p>
                         </li>
                     }
@@ -141,20 +225,34 @@
             <span class="nameWeekDay">Воскресенье</span>
             <ul class="ongoingsWeekDay displayNone">
                 @{
-                    var listSunday = Model.Animes.Where(a => a.Schedule != null).Where(a => a.Schedule.StartDate.DayOfWeek.ToString() == "Sunday").Select(a => a).ToList();
+                    var listSunday = Model.Animes
+                        .Where(a => a.CountEpisodesForNow != a.CountEpisodes)
+                        .Where(a => (a.StartDate.Subtract(DateTime.Now).TotalDays < 7))
+                        .Where(a => a.StartDate.DayOfWeek.ToString() == "Sunday")
+                        .Select(a => a)
+                        .ToList();
                     for (Int32 i = 0; i < listSunday.Count; i++)
                     {
                         <li class="ongoingsWeekDay-item" title="">
-                            <img class="roundPicture" src="data:image/jpeg;base64,@(Convert.ToBase64String(listSunday[i].MainImage))">
+                            <a asp-page="Anime" asp-route-AnimeId="@listSunday[i].Id">
+                                @if (listSunday[i].MainImage != null)
+                                {
+                                    <img class="roundPicture" src="data:image/jpeg;base64,@(Convert.ToBase64String(listSunday[i].MainImage))">
+                                }
+                                else
+                                {
+                                    <img class="roundPicture">
+                                }
+                            </a>
                             <p>@listSunday[i].Name</p>
                             <p>
                                 Серия @(listSunday[i].CountEpisodesForNow + 1)<br>
-                                (@listSunday[i].Schedule.StartDate.ToString("d MMM")) @listSunday[i].Schedule.StartDate.ToShortTimeString())
+                                (@listSunday[i].StartDate.ToString("d MMM")) @listSunday[i].StartDate.ToShortTimeString())
                             </p>
                         </li>
                     }
                 }
-                </ul>
+            </ul>
         </div>
     </div>
     <div class="ongoings">
@@ -183,5 +281,5 @@
             }
         </div>
     </div>
-    </div>
+</div>
 
