@@ -293,8 +293,26 @@ a{
 
 
 
-
-
+.sectionAuthorization{
+    width: 500px;
+    height: 325px;
+    margin: auto;
+    position: fixed;
+    top: 0; left: 0; bottom: 0; right: 0;
+    background: white;
+    border: 1px solid black;
+    padding-bottom: 25px;
+}
+.sectionRegistration{
+    width: 550px;
+    height: 450px;
+    margin: auto;
+    position: fixed;
+    top: 0; left: 0; bottom: 0; right: 0;
+    background: white;
+    border: 1px solid black;
+    padding-bottom: 25px;
+}
 .authorization button{
     width: 150px;
 }
@@ -307,7 +325,14 @@ a{
     margin-left: 50px;
 }
 
-
+.popup-close{
+    position:absolute;
+    text-align: end;
+    padding-top: 5px;
+    padding-right: 7px;
+    display: inline;
+    right: 0px;
+}
 
 
 
