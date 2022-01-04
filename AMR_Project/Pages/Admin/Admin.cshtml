@@ -11,3 +11,11 @@
 <br />
 <a asp-page="AddDubStudio">Add dub studio</a>
 <br />
+
+@for (var i = 0; i < Model.Animes.Count; i++)
+{
+    <a>@Model.Animes[i].Id;</a>
+    <a>@Model.Animes[i].Name;</a>
+    <a asp-page="/Admin/AddScreenshots" asp-route-Id="@Model.Animes[i].Id">Add screenshots</a>
+    <br />
+}

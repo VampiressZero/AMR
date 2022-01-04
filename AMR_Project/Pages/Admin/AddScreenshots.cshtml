@@ -1,0 +1,9 @@
+﻿@page "{Id}"
+@model AMR_Project.Pages.Admin.AddScreenshotsModel
+@{
+}
+<form method="post" enctype="multipart/form-data">
+    <input asp-for="Input.Images" placeholder="Image" multiple /><br />
+    <button type="submit">Add</button>
+</form>
+<a asp-page="/Admin/Admin">Return to admin page</a>

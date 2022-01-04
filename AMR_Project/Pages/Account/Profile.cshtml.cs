@@ -46,11 +46,6 @@ namespace AMR_Project.Pages
         public async Task OnGetAsync()
         {
             CurrentUser = await _userManager.GetUserAsync(User);
-            _db.Entry(CurrentUser).Collection(u => u.Lists).Load();
-            foreach(var l in CurrentUser.Lists)
-            {
-                _db.Entry(l).Collection(l => l.Animes).Load();
-            }
         }
         public async Task<IActionResult> OnPostAsync()
         {

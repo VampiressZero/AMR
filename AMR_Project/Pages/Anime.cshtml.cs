@@ -27,6 +27,8 @@ namespace AMR_Project.Pages
             _db.Entry(Anime).Collection(a => a.Genres).Load();
             _db.Entry(Anime).Collection(a => a.DubStudios).Load();
             _db.Entry(Anime).Collection(a => a.Tags).Load();
+            _db.Entry(Anime).Collection(a => a.Screenshots).Load();
+            foreach(var i in Anime.Screenshots)
             if (Anime.RatingPeopleCount == 0)
             {
                 AvgRating = 0;

@@ -44,8 +44,8 @@ namespace AMR_Project.Models
         public Int32 CountEpisodes { get; set; }
         public String Status { get; set; }
         public List<Genre> Genres { get; set; }
-        public Byte[] MainImage { get; set; }
-        // public List<Byte[]> Screenshots { get; set; }
+        public Image MainImage { get; set; }
+        public List<Image> Screenshots { get; set; }
         public Int32 Year { get; set; }
         public List<DubStudio> DubStudios { get; set; }
         public List<Tag> Tags { get; set; }

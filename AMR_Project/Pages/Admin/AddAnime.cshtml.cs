@@ -46,7 +46,6 @@ namespace AMR_Project.Pages.Admin
 
             [DataType(DataType.Upload)]
             public IFormFile MainImage { get; set; }
-            // public List<Byte[]> Screenshots { get; set; }
             public Int32 Year { get; set; }
             public List<String> DubStudios { get; set; }
             public List<String> Tags { get; set; }
@@ -99,7 +98,8 @@ namespace AMR_Project.Pages.Admin
                 Source = Input.Source,
                 Type = Input.Type,
                 Duration = Input.Duration,
-                StartDate = Input.StartDate
+                StartDate = Input.StartDate,
+                MainImage = new Image(),
             };
 
             for(Int32 i = 0; i < Input.Genres.Count; i++)
@@ -147,7 +147,7 @@ namespace AMR_Project.Pages.Admin
                     imageData = binaryReader.ReadBytes((int)Input.MainImage.Length);
                 }
                 // установка массива байтов
-                anime.MainImage = imageData;
+                anime.MainImage.Picture = imageData;
             }
             _db.Add(anime);
             _db.SaveChanges();

@@ -2,15 +2,15 @@
 @model AMR_Project.Pages.AnimeModel
 @{
 }
-@using AMR_Project.DAL 
-@inject ApplicationContext db 
+@using AMR_Project.DAL
+@inject ApplicationContext db
 <div class="infoAnimeTitle">
     <div>
         @{
             if (Model.Anime.MainImage != null)
             {
                 <img class="PopularAnime imgAnime"
-                     src="data:image/jpeg;base64,@(Convert.ToBase64String(Model.Anime.MainImage))"
+                     src="data:image/jpeg;base64,@(Convert.ToBase64String(Model.Anime.MainImage.Picture))"
                      alt="@Model.Anime.Name"
                      title="@Model.Anime.Name" />
             }
@@ -62,7 +62,7 @@
                             <label>@Model.Anime.Genres[i].Name</label>
                         }
                     }
-                </р>
+                    </р>
                 <p>@Model.Anime.Source</р>
                 <p>@Model.Anime.Studio</р>
                 <p>@Model.Anime.AgeRating</р>
@@ -74,7 +74,7 @@
                             <label>@Model.Anime.Tags[i].Name</label>
                         }
                     }
-                </р>
+                    </р>
                 <p>
                     @{
                         for (Int32 i = 0; i < Model.Anime.DubStudios.Count; i++)
@@ -82,7 +82,7 @@
                             <label>@Model.Anime.DubStudios[i].Name</label>
                         }
                     }
-                </р>
+                    </р>
             </div>
         </div>
     </div>
@@ -91,4 +91,21 @@
     <h2>Описание</h2>
     <p>@Model.Anime.Description</p>
 </div>
+<p>Скриншоты:</p>
+@for (var i = 0; i < Model.Anime.Screenshots.Count; i++)
+{
+    if (Model.Anime.Screenshots[i] != null)
+    {
+        <img class="PopularAnime imgAnime"
+             src="data:image/jpeg;base64,@(Convert.ToBase64String(Model.Anime.Screenshots[i].Picture))"
+             alt="@Model.Anime.Name"
+             title="@Model.Anime.Name" />
+    }
+    else
+    {
+        <img class="PopularAnime imgAnime"
+             alt="@Model.Anime.Name"
+             title="@Model.Anime.Name" />
+    }
+}
 <video class="animeVideo" src="~/img/InShot_20210221_212759508.mp4" controls repeat></video>

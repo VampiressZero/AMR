@@ -21,5 +21,6 @@ namespace AMR_Project.DAL
         public DbSet<Tag> Tags { get; set; }
         public DbSet<DubStudio> DubStudios { get; set; }
         public DbSet<ListAnimes> ListAnimes { get; set; }
+        public DbSet<Image> Images { get; set; }
     }
 }

@@ -17,7 +17,7 @@
                     @if (animesPopular[i].MainImage != null)
                     {
                         <img class="PopularAnime imgAnime"
-                             src="data:image/jpeg;base64,@(Convert.ToBase64String(animesPopular[i].MainImage))"
+                             src="data:image/jpeg;base64,@(Convert.ToBase64String(animesPopular[i].MainImage.Picture))"
                              alt="@animesPopular[i].Name"
                              title="@animesPopular[i].Name" />
                     }
@@ -51,7 +51,7 @@
                             <a asp-page="Anime" asp-route-AnimeId="@listMonday[i].Id">
                                 @if (listMonday[i].MainImage != null)
                                 {
-                                    <img class="roundPicture" src="data:image/jpeg;base64,@(Convert.ToBase64String(listMonday[i].MainImage))">
+                                    <img class="roundPicture" src="data:image/jpeg;base64,@(Convert.ToBase64String(listMonday[i].MainImage.Picture))">
                                 }
                                 else
                                 {
@@ -82,7 +82,7 @@
                             <a asp-page="Anime" asp-route-AnimeId="@listTuesday[i].Id">
                                 @if (listTuesday[i].MainImage != null)
                                 {
-                                    <img class="roundPicture" src="data:image/jpeg;base64,@(Convert.ToBase64String(listTuesday[i].MainImage))">
+                                    <img class="roundPicture" src="data:image/jpeg;base64,@(Convert.ToBase64String(listTuesday[i].MainImage.Picture))">
                                 }
                                 else
                                 {
@@ -113,7 +113,7 @@
                             <a asp-page="Anime" asp-route-AnimeId="@listWednesday[i].Id">
                                 @if (listWednesday[i].MainImage != null)
                                 {
-                                    <img class="roundPicture" src="data:image/jpeg;base64,@(Convert.ToBase64String(listWednesday[i].MainImage))">
+                                    <img class="roundPicture" src="data:image/jpeg;base64,@(Convert.ToBase64String(listWednesday[i].MainImage.Picture))">
                                 }
                                 else
                                 {
@@ -144,7 +144,7 @@
                             <a asp-page="Anime" asp-route-AnimeId="@listThursday[i].Id">
                                 @if (listThursday[i].MainImage != null)
                                 {
-                                    <img class="roundPicture" src="data:image/jpeg;base64,@(Convert.ToBase64String(listThursday[i].MainImage))">
+                                    <img class="roundPicture" src="data:image/jpeg;base64,@(Convert.ToBase64String(listThursday[i].MainImage.Picture))">
                                 }
                                 else
                                 {
@@ -175,7 +175,7 @@
                             <a asp-page="Anime" asp-route-AnimeId="@listFriday[i].Id">
                                 @if (listFriday[i].MainImage != null)
                                 {
-                                    <img class="roundPicture" src="data:image/jpeg;base64,@(Convert.ToBase64String(listFriday[i].MainImage))">
+                                    <img class="roundPicture" src="data:image/jpeg;base64,@(Convert.ToBase64String(listFriday[i].MainImage.Picture))">
                                 }
                                 else
                                 {
@@ -206,7 +206,7 @@
                             <a asp-page="Anime" asp-route-AnimeId="@listSaturday[i].Id">
                                 @if (listSaturday[i].MainImage != null)
                                 {
-                                    <img class="roundPicture" src="data:image/jpeg;base64,@(Convert.ToBase64String(listSaturday[i].MainImage))">
+                                    <img class="roundPicture" src="data:image/jpeg;base64,@(Convert.ToBase64String(listSaturday[i].MainImage.Picture))">
                                 }
                                 else
                                 {
@@ -237,7 +237,7 @@
                             <a asp-page="Anime" asp-route-AnimeId="@listSunday[i].Id">
                                 @if (listSunday[i].MainImage != null)
                                 {
-                                    <img class="roundPicture" src="data:image/jpeg;base64,@(Convert.ToBase64String(listSunday[i].MainImage))">
+                                    <img class="roundPicture" src="data:image/jpeg;base64,@(Convert.ToBase64String(listSunday[i].MainImage.Picture))">
                                 }
                                 else
                                 {
@@ -266,7 +266,7 @@
                         @if (animesOngoings[i].MainImage != null)
                         {
                             <img class="imgAnime"
-                                 src="data:image/jpeg;base64,@(Convert.ToBase64String(animesOngoings[i].MainImage))"
+                                 src="data:image/jpeg;base64,@(Convert.ToBase64String(animesOngoings[i].MainImage.Picture))"
                                  alt="@animesOngoings[i].Name"
                                  title="@animesOngoings[i].Name" />
                         }

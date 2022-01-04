@@ -12,14 +12,6 @@
     {
         <a asp-page="/Admin/Admin">Admin page</a>
     }
-    foreach(var l in user.Lists)
-    {
-        <p>@l.Name</p>
-        foreach(var a in l.Animes)
-        {
-            <p>@a.Name</p>
-            }
-    }
 }
 <div class="infoAccount">
     <h3>Никнейм: </h3>
@@ -40,7 +32,9 @@
     <div class="divList-item">
         <p class="categoryList">Аниме</p>
         <ul class="nameLists">
+            <a asp-page="/Lists">
             <li class="nameList-item">Смотрю (56)</li>
+            </a>
             <li class="nameList-item">В планах (456)</li>
             <li class="nameList-item">Брошено</li>
             <li class="nameList-item">Просмотрено</li>

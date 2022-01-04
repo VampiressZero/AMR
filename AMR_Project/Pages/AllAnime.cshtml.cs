@@ -20,6 +20,10 @@ namespace AMR_Project.Pages
         public void OnGet()
         {
             Animes = _db.Animes.ToList();
+            foreach(var a in Animes)
+            {
+                _db.Entry(a).Reference(a => a.MainImage).Load();
+            }
         }
     }
 }
