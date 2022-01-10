@@ -5,37 +5,38 @@
 
 <form method="post" enctype="multipart/form-data">
     <input asp-for="Input.Name" placeholder="Name" /><br />
+    <input asp-for="Input.OriginalName" placeholder="OriginalName" /><br />
+    <input asp-for="Input.JapanName" placeholder="JapanName" /><br />
+    <input asp-for="Input.EnglishName" placeholder="EnglishName" /><br />
     <input asp-for="Input.Studio" placeholder="Studio" /><br />
     <input asp-for="Input.Description" placeholder="Description" /><br />
-    <input asp-for="Input.CountEpidodesForNow" placeholder="CountEpidodesForNow" /><br />
     <input asp-for="Input.CountEpisodes" placeholder="CountEpisodes" /><br />
     <input asp-for="Input.Status" placeholder="Status" /><br />
 
     <select asp-for="Input.Genres">
         <option disabled>Genres</option>
-        @foreach(var g in Model.Genres)
-            {
-                <option>@g.Name</option>
-            }
+        @foreach (var g in Model.Genres)
+        {
+            <option>@g.Name</option>
+        }
     </select><br />
 
     <input asp-for="Input.MainImage" placeholder="MainImage" /><br />
-    <input asp-for="Input.Year" placeholder="Year" /><br />
 
     <select asp-for="Input.DubStudios">
         <option disabled>DubStudio</option>
-        @foreach(var d in Model.DubStudios)
-            {
-                <option>@d.Name</option>
-            }
+        @foreach (var d in Model.DubStudios)
+        {
+            <option>@d.Name</option>
+        }
     </select><br />
 
     <select asp-for="Input.Tags">
         <option disabled>Tags</option>
-        @foreach(var t in Model.Tags)
-            {
-                <option>@t.Name</option>
-            }
+        @foreach (var t in Model.Tags)
+        {
+            <option>@t.Name</option>
+        }
     </select><br />
 
     <input asp-for="Input.AgeRating" placeholder="AgeRating" /><br />
@@ -43,6 +44,7 @@
     <input asp-for="Input.Type" placeholder="Type" /><br />
     <input asp-for="Input.Duration" placeholder="Duration" /><br />
     <input asp-for="Input.StartDate" /><br />
+    <input asp-for="Input.EndDate" /><br />
 
     <button type="submit">Add</button><br />
 </form>

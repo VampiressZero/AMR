@@ -24,7 +24,7 @@ namespace AMR_Project.Pages
             _db = db;
             _userManager = userManager;
         }
-        public List<Anime> Animes;
+        public List<AMR_Project.Models.Anime> Animes;
         public async Task<IActionResult> OnGetAsync()
         {
             Animes = _db.Animes.ToList();

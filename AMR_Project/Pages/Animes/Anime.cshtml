@@ -1,5 +1,5 @@
 ﻿@page "/Anime/{AnimeId}"
-@model AMR_Project.Pages.AnimeModel
+@model AMR_Project.Pages.Animes.AnimeModel
 @{
 }
 @using AMR_Project.DAL
@@ -36,25 +36,47 @@
         </form>
     </div>
     <div>
-        <h1>@Model.Anime.Name Рейтинг: @Model.AvgRating Кол-во голосов: @Model.Anime.RatingPeopleCount</h1>
+        <h1>@Model.Anime.Name / @Model.Anime.OriginalName</h1>
+        <p>Рейтинг: @Model.AvgRating Кол-во голосов: @Model.Anime.RatingPeopleCount</p>
         <hr>
         <div class="columnInfoAnimeTitle">
             <div class="nameInfoTitle">
+                @if (!Model.Anime.Status.Equals("Вышел"))
+                {
+                    <p>Следующий эпизод:</p>
+                }
+                <p>Японское название</p>
+                <p>Английское название</p>
                 <p>Тип</р>
                 <p>Эпизод</р>
                 <p>Статус </р>
+                <p>Выпуск</p>
                 <p>Жанр</р>
                 <p>Первоисточник</р>
                 <p>Студия</р>
                 <p>Рейтинг MPAA</р>
                 <p>Длительность</р>
-                <p>Теги</р>
                 <p>Озвучка</p>
             </div>
             <div>
+                @if (!Model.Anime.Status.Equals("Вышел"))
+                {
+                    <p>@Model.Anime.NextEpisodeTime.ToString("dd MMM yyyy ddd HH:mm")</p>
+                }
+                <p>@Model.Anime.JapanName</p>
+                <p>@Model.Anime.EnglishName</p>
                 <p>@Model.Anime.Type</р>
                 <p>@Model.Anime.CountEpisodesForNow / @Model.Anime.CountEpisodes</р>
-                <p>@Model.Anime.Status</р>
+                <p>
+                    @Model.Anime.Status</р>
+                @if (Model.Anime.Status.Equals("Вышел"))
+                {
+                <p>С @Model.Anime.StartDate.ToString("d MMMM yyyy") по @Model.Anime.EndDate.ToString("d MMMM yyyy")</p>
+            }
+            else
+            {
+                <p>С @Model.Anime.StartDate.ToString("d MMMM yyyy")</p>
+            }
                 <p>
                     @{
                         for (Int32 i = 0; i < Model.Anime.Genres.Count; i++)

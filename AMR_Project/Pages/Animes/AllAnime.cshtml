@@ -1,5 +1,5 @@
-﻿@page
-@model AMR_Project.Pages.AllAnimeModel
+﻿@page "/Animes"
+@model AMR_Project.Pages.Animes.AllAnimeModel
 @{
 }
 <div class="allAnimeFilter">
@@ -8,7 +8,7 @@
             var animes = Model.Animes.OrderByDescending(a => a.Rating).Select(a => a).ToList();
             for (Int32 i = 0; i < animes.Count; i++)
             {
-                <a asp-page="Anime" asp-route-AnimeId="@animes[i].Id">
+                <a asp-page="/Animes/Anime" asp-route-AnimeId="@animes[i].Id">
                     @if (animes[i].MainImage != null)
                     {
                         <img class="imgAnime"

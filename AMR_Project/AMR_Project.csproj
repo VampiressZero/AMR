@@ -39,4 +39,9 @@
     </PackageReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Pages\Mangas\" />
+    <Folder Include="Pages\Ranobes\" />
+  </ItemGroup>
+
 </Project>

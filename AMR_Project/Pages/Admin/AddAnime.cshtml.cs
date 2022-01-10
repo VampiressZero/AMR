@@ -27,6 +27,14 @@ namespace AMR_Project.Pages.Admin
             [Required]
             [DataType(DataType.Text)]
             public String Name { get; set; }
+            [Required]
+            [DataType(DataType.Text)]
+            public String OriginalName { get; set; }
+            [Required]
+            [DataType(DataType.Text)]
+            public String JapanName { get; set; }
+            [DataType(DataType.Text)]
+            public String EnglishName { get; set; }
 
             [DataType(DataType.Text)]
             public String Studio { get; set; }
@@ -34,7 +42,6 @@ namespace AMR_Project.Pages.Admin
             [Required]
             [DataType(DataType.MultilineText)]
             public String Description { get; set; }
-            public Int32 CountEpidodesForNow { get; set; }
             public Int32 CountEpisodes { get; set; }
 
             [Required]
@@ -46,7 +53,6 @@ namespace AMR_Project.Pages.Admin
 
             [DataType(DataType.Upload)]
             public IFormFile MainImage { get; set; }
-            public Int32 Year { get; set; }
             public List<String> DubStudios { get; set; }
             public List<String> Tags { get; set; }
 
@@ -63,6 +69,8 @@ namespace AMR_Project.Pages.Admin
             public String Duration { get; set; }
             [DataType(DataType.DateTime)]
             public DateTime StartDate { get; set; }
+            [DataType(DataType.DateTime)]
+            public DateTime EndDate { get; set; }
         }
         [BindProperty]
         public InputModel Input { get; set; }
@@ -85,13 +93,14 @@ namespace AMR_Project.Pages.Admin
             var anime = new Anime
             {
                 Name = Input.Name,
+                OriginalName = Input.OriginalName,
+                JapanName = Input.JapanName,
+                EnglishName = Input.EnglishName,
                 Studio = Input.Studio,
                 Description = Input.Description,
-                CountEpisodesForNow = Input.CountEpidodesForNow,
                 CountEpisodes = Input.CountEpisodes,
                 Genres = new List<Genre>(),
                 Status = Input.Status,
-                Year = Input.Year,
                 DubStudios = new List<DubStudio>(),
                 Tags = new List<Tag>(),
                 AgeRating = Input.AgeRating,
@@ -99,8 +108,14 @@ namespace AMR_Project.Pages.Admin
                 Type = Input.Type,
                 Duration = Input.Duration,
                 StartDate = Input.StartDate,
+                EndDate = Input.EndDate,
+                NextEpisodeTime = Input.StartDate,
                 MainImage = new Image(),
             };
+            if (anime.Status.Equals("Вышел"))
+            {
+                anime.CountEpisodesForNow = anime.CountEpisodes;
+            }
 
             for(Int32 i = 0; i < Input.Genres.Count; i++)
             {
@@ -114,25 +129,28 @@ namespace AMR_Project.Pages.Admin
                 }
             }
 
-            for (Int32 i = 0; i < Input.DubStudios.Count; i++)
+            if (Input.DubStudios != null)
             {
-                for (Int32 j = 0; j < DubStudios.Count; j++)
+                for (Int32 i = 0; i < Input.DubStudios.Count; i++)
                 {
-                    if (Input.DubStudios[i] == DubStudios[j].Name)
+                    for (Int32 j = 0; j < DubStudios.Count; j++)
                     {
-                        anime.DubStudios.Add(DubStudios[j]);
-                        break;
+                        if (Input.DubStudios[i] == DubStudios[j].Name)
+                        {
+                            anime.DubStudios.Add(DubStudios[j]);
+                            break;
+                        }
                     }
                 }
             }
 
-            for (Int32 i = 0; i < Input.Tags.Count; i++)
+            if (Input.Tags != null)
             {
-                for (Int32 j = 0; j < Tags.Count; j++)
+                foreach (var t in Input.Tags)
                 {
-                    if (Input.Tags[i] == Tags[j].Name)
+                    foreach (var t1 in Tags.Where(t1 => t == t1.Name))
                     {
-                        anime.Tags.Add(Tags[j]);
+                        anime.Tags.Add(t1);
                         break;
                     }
                 }

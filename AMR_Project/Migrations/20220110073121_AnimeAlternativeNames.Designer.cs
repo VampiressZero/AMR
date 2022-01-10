@@ -4,14 +4,16 @@ using AMR_Project.DAL;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace AMR_Project.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
-    partial class ApplicationContextModelSnapshot : ModelSnapshot
+    [Migration("20220110073121_AnimeAlternativeNames")]
+    partial class AnimeAlternativeNames
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -41,13 +43,7 @@ namespace AMR_Project.Migrations
                     b.Property<string>("Duration")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime>("EndDate")
-                        .HasColumnType("datetime2");
-
                     b.Property<string>("EnglishName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("JapanName")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int?>("MainImageId")
@@ -55,9 +51,6 @@ namespace AMR_Project.Migrations
 
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("NextEpisodeTime")
-                        .HasColumnType("datetime2");
 
                     b.Property<string>("OriginalName")
                         .HasColumnType("nvarchar(max)");
@@ -82,6 +75,9 @@ namespace AMR_Project.Migrations
 
                     b.Property<string>("Type")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Year")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
