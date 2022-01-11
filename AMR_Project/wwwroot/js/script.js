@@ -22,13 +22,10 @@ divWeekDay.addEventListener('click', function(event){
 });
 
 let divAuthorization = document.querySelector('.sectionAuthorization'),
-    popupCloseA = document.querySelector('.popup-close'),
-    authorization = document.getElementById('authorization'),
-    divRegistration = document.querySelector('.sectionRegistration'),
-    popupCloseR = document.querySelectorAll('.popup-close')[1],
-    registration = document.getElementById('registration');
+    popupClose = document.querySelector('.popup-close'),
+    authorization = document.getElementById('authorization');
 
-console.log(popupCloseR);
+
 function popupWindow (clickButton, window, popupClose){
     clickButton.addEventListener('click', function(){
         window.classList.remove('displayNone');
@@ -38,12 +35,4 @@ function popupWindow (clickButton, window, popupClose){
     })
 
 }
-// function popupWindowClose (clickButton, window, popupClose){
-//     clickButton.addEventListener('click', function(){
-//         window.classList.remove('displayNone');
-//     })
-// }
-
-popupWindow(authorization, divAuthorization, popupCloseA);
-
-popupWindow(registration, divRegistration, popupCloseR);
+popupWindow(authorization, divAuthorization, popupClose);
