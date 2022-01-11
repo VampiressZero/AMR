@@ -25,5 +25,17 @@ namespace AMR_Project.Pages.Animes
                 _db.Entry(a).Reference(a => a.MainImage).Load();
             }
         }
+
+        public IActionResult OnPost()
+        {
+            Animes = _db.Animes.ToList();
+            foreach (var a in Animes)
+            {
+                _db.Entry(a).Reference(a => a.MainImage).Load();
+            }
+            var animes = Animes.Where(a => a.Status.Equals("Онгоинг")).Select(a => a).ToList();
+            Animes = animes;
+            return Page();
+        }
     }
 }

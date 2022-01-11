@@ -74,6 +74,7 @@ namespace AMR_Project.Pages.Admin
         }
         [BindProperty]
         public InputModel Input { get; set; }
+        public String Message { get; set; }
 
         public List<Genre> Genres { get; set; }
         public List<DubStudio> DubStudios { get; set; }
@@ -169,6 +170,7 @@ namespace AMR_Project.Pages.Admin
             }
             _db.Add(anime);
             _db.SaveChanges();
+            Message = "Anime added successfully";
         }
     }
 }

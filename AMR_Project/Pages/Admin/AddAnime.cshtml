@@ -48,4 +48,8 @@
 
     <button type="submit">Add</button><br />
 </form>
+@if (Model.Message != null)
+{
+    <label>@Model.Message</label><br/>
+}
 <a asp-page="/Admin/Admin">Return to admin page</a>

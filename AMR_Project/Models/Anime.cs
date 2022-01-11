@@ -37,7 +37,7 @@ namespace AMR_Project.Models
                     _db.Entry(this).State = EntityState.Modified;
                     _db.SaveChanges();
                 }
-                if (_countEpisodesForNow == CountEpisodes)
+                if (_countEpisodesForNow == CountEpisodes && !Status.Equals("Вышел"))
                 {
                     Status = "Вышел";
                     EndDate = NextEpisodeTime;

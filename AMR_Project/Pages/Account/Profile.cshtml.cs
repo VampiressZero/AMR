@@ -1,16 +1,13 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
+using System.ComponentModel.DataAnnotations;
 using System.Threading.Tasks;
+using AMR_Project.DAL;
+using AMR_Project.Models;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using AMR_Project.Models;
-using Microsoft.AspNetCore.Identity;
-using System.ComponentModel.DataAnnotations;
-using AMR_Project.DAL;
 
-namespace AMR_Project.Pages
+namespace AMR_Project.Pages.Account
 {
     [Authorize]
     public class ProfileModel : PageModel
@@ -46,6 +43,11 @@ namespace AMR_Project.Pages
         public async Task OnGetAsync()
         {
             CurrentUser = await _userManager.GetUserAsync(User);
+            _db.Entry(CurrentUser).Collection(u => u.Lists).Load();
+            foreach (var l in CurrentUser.Lists)
+            {
+                _db.Entry(l).Collection(l => l.Animes).Load();
+            }
         }
         public async Task<IActionResult> OnPostAsync()
         {

@@ -30,6 +30,7 @@ namespace AMR_Project
             var connectionString = Configuration.GetConnectionString("DefaultConnection");
             services.AddDbContext<ApplicationContext>(options => options.UseSqlServer(connectionString));
             services.AddIdentity<User, IdentityRole>().AddEntityFrameworkStores<ApplicationContext>();
+
             services.AddRazorPages();
             services.Configure<IdentityOptions>(options => // Identity settings
             {
@@ -59,6 +60,7 @@ namespace AMR_Project
                 options.LoginPath = "/Login";
                 options.LogoutPath = "/Logout";
                 options.AccessDeniedPath = "/";
+                options.ExpireTimeSpan = TimeSpan.FromDays(1);
                 options.SlidingExpiration = true;
             });
         }

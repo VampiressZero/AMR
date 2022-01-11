@@ -47,15 +47,22 @@
                 }
                 <p>Японское название</p>
                 <p>Английское название</p>
-                <p>Тип</р>
-                <p>Эпизод</р>
-                <p>Статус </р>
+                <p>Тип</p>
+                @if (Model.Anime.Type.Equals("Фильм"))
+                {
+
+                }
+                else
+                {
+                    <p>Эпизод</p>
+                }
+                <p>Статус </p>
                 <p>Выпуск</p>
-                <p>Жанр</р>
-                <p>Первоисточник</р>
-                <p>Студия</р>
-                <p>Рейтинг MPAA</р>
-                <p>Длительность</р>
+                <p>Жанр</p>
+                <p>Первоисточник</p>
+                <p>Студия</p>
+                <p>Рейтинг MPAA</p>
+                <p>Длительность</p>
                 <p>Озвучка</p>
             </div>
             <div>
@@ -65,18 +72,30 @@
                 }
                 <p>@Model.Anime.JapanName</p>
                 <p>@Model.Anime.EnglishName</p>
-                <p>@Model.Anime.Type</р>
-                <p>@Model.Anime.CountEpisodesForNow / @Model.Anime.CountEpisodes</р>
-                <p>
-                    @Model.Anime.Status</р>
-                @if (Model.Anime.Status.Equals("Вышел"))
+                <p>@Model.Anime.Type</p>
+                @if (Model.Anime.Type.Equals("Фильм"))
                 {
-                <p>С @Model.Anime.StartDate.ToString("d MMMM yyyy") по @Model.Anime.EndDate.ToString("d MMMM yyyy")</p>
-            }
-            else
-            {
-                <p>С @Model.Anime.StartDate.ToString("d MMMM yyyy")</p>
-            }
+
+                }
+                else
+                {
+                    <p>@Model.Anime.CountEpisodesForNow / @Model.Anime.CountEpisodes</p>
+                }
+                <p>@Model.Anime.Status</p>
+                @{
+                    if (Model.Anime.Type.Equals("Фильм"))
+                    {
+                        <p>Вышло @Model.Anime.StartDate.ToString("d MMMM yyyy")</p>
+                    }
+                    else if (Model.Anime.Status.Equals("Вышел"))
+                    {
+                        <p>С @Model.Anime.StartDate.ToString("d MMMM yyyy") по @Model.Anime.EndDate.ToString("d MMMM yyyy")</p>
+                    }
+                    else
+                    {
+                        <p>С @Model.Anime.StartDate.ToString("d MMMM yyyy")</p>
+                    }
+                }
                 <p>
                     @{
                         for (Int32 i = 0; i < Model.Anime.Genres.Count; i++)
@@ -84,11 +103,11 @@
                             <label>@Model.Anime.Genres[i].Name</label>
                         }
                     }
-                    </р>
-                <p>@Model.Anime.Source</р>
-                <p>@Model.Anime.Studio</р>
-                <p>@Model.Anime.AgeRating</р>
-                <p>@Model.Anime.Duration</р>
+                </p>
+                <p>@Model.Anime.Source</p>
+                <p>@Model.Anime.Studio</p>
+                <p>@Model.Anime.AgeRating</p>
+                <p>@Model.Anime.Duration</p>
                 <p>
                     @{
                         for (Int32 i = 0; i < Model.Anime.Tags.Count; i++)
@@ -96,7 +115,7 @@
                             <label>@Model.Anime.Tags[i].Name</label>
                         }
                     }
-                    </р>
+                </p>
                 <p>
                     @{
                         for (Int32 i = 0; i < Model.Anime.DubStudios.Count; i++)
@@ -104,7 +123,7 @@
                             <label>@Model.Anime.DubStudios[i].Name</label>
                         }
                     }
-                    </р>
+                </p>
             </div>
         </div>
     </div>
@@ -113,21 +132,24 @@
     <h2>Описание</h2>
     <p>@Model.Anime.Description</p>
 </div>
-<p>Скриншоты:</p>
-@for (var i = 0; i < Model.Anime.Screenshots.Count; i++)
+@if (Model.Anime.Screenshots != null)
 {
-    if (Model.Anime.Screenshots[i] != null)
+    <p>Скриншоты:</p>
+    @for (var i = 0; i < Model.Anime.Screenshots.Count; i++)
     {
-        <img class="PopularAnime imgAnime"
-             src="data:image/jpeg;base64,@(Convert.ToBase64String(Model.Anime.Screenshots[i].Picture))"
-             alt="@Model.Anime.Name"
-             title="@Model.Anime.Name" />
-    }
-    else
-    {
-        <img class="PopularAnime imgAnime"
-             alt="@Model.Anime.Name"
-             title="@Model.Anime.Name" />
+        if (Model.Anime.Screenshots[i] != null)
+        {
+            <img class="PopularAnime imgAnime"
+                 src="data:image/jpeg;base64,@(Convert.ToBase64String(Model.Anime.Screenshots[i].Picture))"
+                 alt="@Model.Anime.Name"
+                 title="@Model.Anime.Name" />
+        }
+        else
+        {
+            <img class="PopularAnime imgAnime"
+                 alt="@Model.Anime.Name"
+                 title="@Model.Anime.Name" />
+        }
     }
 }
 <video class="animeVideo" src="~/img/InShot_20210221_212759508.mp4" controls repeat></video>

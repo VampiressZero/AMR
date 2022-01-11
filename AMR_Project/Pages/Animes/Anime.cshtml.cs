@@ -51,9 +51,6 @@ namespace AMR_Project.Pages.Animes
         public IActionResult OnPostSelect(Int32 animeId)
         {
             Anime = _db.Find<Anime>(animeId);
-            _db.Entry(Anime).Collection(a => a.Genres).Load();
-            _db.Entry(Anime).Collection(a => a.DubStudios).Load();
-            _db.Entry(Anime).Collection(a => a.Tags).Load();
             var list = Request.Form["selectList"];
             var user = _userManager.GetUserAsync(User).Result;
             _db.Entry(user).Collection(u => u.Lists).Load();
@@ -63,9 +60,8 @@ namespace AMR_Project.Pages.Animes
                 _db.Entry(selectedList).Collection(l => l.Animes).Load();
                 selectedList.Animes.Add(Anime);
             }
-
             _db.SaveChanges();
-            return Page();
+            return RedirectToPage();
         }
     }
 }

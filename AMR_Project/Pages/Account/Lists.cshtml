@@ -1,5 +1,5 @@
-﻿@page
-@model AMR_Project.Pages.ListsModel
+﻿@page "/Profile/Lists"
+@model AMR_Project.Pages.Account.ListsModel
 @{
 }
 
@@ -12,22 +12,23 @@
     <a class="menuLists-item">Просмотрено</a>
     <a class="menuLists-item">Любимое</a>
 </nav>
-<div class="selectList">
-    @{
-        foreach (var l in Model.CurrentUser.Lists)
-        {
-            if (l.Name == "Watching")
-            {
-                foreach (var a in l.Animes)
+@{
+    var list = Model.CurrentUser.Lists.Find(l => l.Name.Equals("Watching"));
+    @foreach (var a in list.Animes)
+    {
+        <form method="post" asp-route-animeId="@a.Id" asp-route-listId="@list.Id">
+            <div class="selectList">
+                @if (a.MainImage != null)
                 {
                     <img class="roundPicture" src="data:image/jpeg;base64,@(Convert.ToBase64String(a.MainImage.Picture))">
-                    <span class="">@a.Name</span>
-                    <button>Удалить</button>
                 }
-            }
-        }
+                else
+                {
+                    <img class="roundPicture">
+                }
+                <span class="">@a.Name</span>
+                <button type="submit">Удалить</button>
+            </div>
+        </form>
     }
-    <img class="roundPicture" src="img/45576.jpg" alt="Реикарнация" title="Реикарнация">
-    <span class="">Реинкарнация безработного: История о приключениях в другом мире</span>
-    <button>Удалить</button>
-</div>
+}
