@@ -102,14 +102,20 @@ a{
 }
 
 .scheduleAndOngoings{
-    margin-top: 75px;
     display: grid;
     grid-template-columns: 350px auto;
     gap: 25px;
 }
 
+
+
+.textOngoing{
+    margin-top: 75px;
+}
+
 .schedule{
     /* background:#534ED9; */
+    margin-top: 25px;
     text-align: center;
 }
 .schedule h3{
@@ -153,11 +159,6 @@ a{
     float: left;
     border-radius: 50%;
 }
-
-
-
-
-
 
 .imgongoings, .allAnime{
 
