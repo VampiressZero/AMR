@@ -1,0 +1,48 @@
+﻿@page
+@model AMR_Project.Pages.Admin.AddMangaModel
+@{
+}
+<form method="post" enctype="multipart/form-data">
+    <input asp-for="Input.Name" placeholder="Name" /><br />
+    <input asp-for="Input.OriginalName" placeholder="OriginalName" /><br />
+    <input asp-for="Input.JapanName" placeholder="JapanName" /><br />
+    <input asp-for="Input.Description" placeholder="Description" /><br />
+    <input asp-for="Input.Year" placeholder="Year" /><br />
+    <input asp-for="Input.ChapterCount" placeholder="ChapterCount" /><br/>
+    <input asp-for="Input.Status" placeholder="Status" /><br />
+    <input asp-for="Input.StatusOfTranslate" placeholder="StatusOfTranslate" /><br />
+
+    <select asp-for="Input.Genres">
+        <option disabled>Genres</option>
+        @foreach (var g in Model.Genres)
+        {
+            <option>@g.Name</option>
+        }
+    </select><br />
+
+    <input asp-for="Input.MainImage" placeholder="MainImage" /><br />
+
+    <select asp-for="Input.Tags">
+        <option disabled>Tags</option>
+        @foreach (var t in Model.Tags)
+        {
+            <option>@t.Name</option>
+        }
+    </select><br />
+
+    <input asp-for="Input.AgeRating" placeholder="AgeRating" /><br />
+    <input asp-for="Input.Type" placeholder="Type" /><br />
+    <input asp-for="Input.PublishType" placeholder="PublishType" /><br />
+    <input asp-for="Input.Author" placeholder="Author" /><br />
+    <input asp-for="Input.Painter" placeholder="Painter" /><br />
+    <input asp-for="Input.Publisher" placeholder="Publisher" /><br />
+    <input asp-for="Input.Translator" placeholder="Translator" /><br />
+
+    <button type="submit">Add</button><br />
+</form>
+@if (Model.Message != null)
+{
+    <label>@Model.Message</label>
+    <br />
+}
+<a asp-page="/Admin/Admin">Return to admin page</a>

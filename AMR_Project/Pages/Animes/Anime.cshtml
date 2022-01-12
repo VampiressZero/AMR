@@ -4,7 +4,7 @@
 }
 @using AMR_Project.DAL
 @inject ApplicationContext db
-<div class="infoAnimeTitle">
+<div class="title">
     <div>
         @{
             if (Model.Anime.MainImage != null)
@@ -39,7 +39,7 @@
         <h1>@Model.Anime.Name / @Model.Anime.OriginalName</h1>
         <p>Рейтинг: @Model.AvgRating Кол-во голосов: @Model.Anime.RatingPeopleCount</p>
         <hr>
-        <div class="columnInfoAnimeTitle">
+        <div class="columnInfoTitle">
             <div class="nameInfoTitle">
                 @if (!Model.Anime.Status.Equals("Вышел"))
                 {
@@ -97,12 +97,12 @@
                     }
                 }
                 <p>
-                    @{
-                        for (Int32 i = 0; i < Model.Anime.Genres.Count; i++)
-                        {
-                            <label>@Model.Anime.Genres[i].Name</label>
-                        }
+
+                    @foreach (var genre in Model.Anime.Genres)
+                    {
+                        <label>@genre.Name</label>
                     }
+
                 </p>
                 <p>@Model.Anime.Source</p>
                 <p>@Model.Anime.Studio</p>
@@ -132,7 +132,7 @@
     <h2>Описание</h2>
     <p>@Model.Anime.Description</p>
 </div>
-@if (Model.Anime.Screenshots != null)
+@if (Model.Anime.Screenshots.Count != 0 && Model.Anime.Screenshots != null)
 {
     <p>Скриншоты:</p>
     @for (var i = 0; i < Model.Anime.Screenshots.Count; i++)

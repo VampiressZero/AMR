@@ -58,7 +58,15 @@ namespace AMR_Project.Pages.Account
                         new ListAnimes { Name = "Dropped" },
                         new ListAnimes { Name = "Watching" },
                         new ListAnimes { Name = "Planned" }
-                    }
+                    },
+                    ListMangas = new List<ListMangas>
+                    {
+                        new ListMangas { Name = "Watched" },
+                        new ListMangas { Name = "Dropped" },
+                        new ListMangas { Name = "Watching" },
+                        new ListMangas { Name = "Planned" }
+                    },
+
                 };
                 var result = await _userManager.CreateAsync(user, Input.Password);
                 if (result.Succeeded)

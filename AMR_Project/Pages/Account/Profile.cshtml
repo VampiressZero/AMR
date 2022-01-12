@@ -33,7 +33,12 @@
         <p class="categoryList">Аниме</p>
         <ul class="nameLists">
             <a asp-page="/Account/Lists">
-            <li class="nameList-item">Смотрю (@Model.CurrentUser.Lists.Find(l => l.Name.Equals("Watching")).Animes.Count)</li>
+            <li class="nameList-item">Смотрю (
+                @if (Model.CurrentUser.Lists.Count != 0 && Model.CurrentUser.Lists != null)
+                {
+                    @Model.CurrentUser.Lists.Find(l => l.Name.Equals("Watching")).Animes.Count
+                }
+                )</li>
             </a>
             <li class="nameList-item">В планах (456)</li>
             <li class="nameList-item">Брошено</li>
