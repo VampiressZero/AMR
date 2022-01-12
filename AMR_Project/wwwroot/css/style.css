@@ -79,7 +79,12 @@ a{
     margin-bottom: 50px;
     margin-top: 25px;
 }
-
+.conteinerReadRanobe{
+    width: 900px;;
+    margin: auto;
+    margin-bottom: 50px;
+    margin-top: 25px;
+}
 .textPopular{
     display: flex;
     justify-content: flex-start;
@@ -438,7 +443,9 @@ a{
     text-indent: 50px;
     line-height: 1.35em;
 }
-
+.description p{
+    white-space: pre-wrap;
+}
 .menuTitle{
     display: flex;
 }
@@ -464,10 +471,26 @@ a{
 
 
 
-
-
-
-
+.textChapter{
+    font-family: "Tahoma";
+    font-size: 16px;
+    white-space: pre-wrap;
+    text-indent: 50px;
+}
+.chapterNavigation{
+    display: flex;
+    column-gap: 25px;
+    align-items: center;
+    justify-content: center;
+}
+.chapterNavigation select{
+    padding: 5px 10px;
+    max-width: 300px;
+}
+.qq{
+    width: 120px;
+    max-width: 300px;
+}
 
 
 
