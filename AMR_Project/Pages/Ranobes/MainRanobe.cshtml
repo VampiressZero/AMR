@@ -1,35 +1,22 @@
-﻿@page "MangaMain"
-@model AMR_Project.Pages.Mangas.MainMangaModel
+﻿@page "RanobeMain"
+@model AMR_Project.Pages.Ranobes.MainRanobeModel
 @{
 }
 <section class="conteiner">
     <div class="Popular">
         <div class="textPopular">
             <h2>Самая популярная манга</h2>
-            <a class="textAllAnime" asp-page="/Mangas/AllManga">Вся манга</a>
+            <a class="textAllAnime" asp-page="/Ranobe/AllRanobe">Вся манга</a>
         </div>
         <div class="slider">
-            @{
-                var mangasPopular = Model.Mangas.OrderByDescending(a => a.Rating).Take(7).Select(a => a).ToList();
-                for (Int32 i = 0; i < mangasPopular.Count; i++)
-                {
-                    <a asp-page="/Mangas/Manga" asp-route-mangaId="@mangasPopular[i].Id">
-                        @if (mangasPopular[i].MainImage != null)
-                        {
-                            <img class="PopularAnime imgAnime"
-                                 src="data:image/jpeg;base64,@(Convert.ToBase64String(mangasPopular[i].MainImage))"
-                                 alt="@mangasPopular[i].Name"
-                                 title="@mangasPopular[i].Name" />
-                        }
-                        else
-                        {
-                            <img class="PopularAnime imgAnime"
-                                 alt="@mangasPopular[i].Name"
-                                 title="@mangasPopular[i].Name" />
-                        }
-                    </a>
-                }
-            }
+            <img class="PopularAnime imgAnime" src="../img/38524.jpg">
+            <img class="PopularAnime imgAnime" src="../img/40834.jpg">
+            <img class="PopularAnime imgAnime" src="../img/45576.jpg">
+            <img class="PopularAnime imgAnime" src="../img/5114.jpg">
+            <img class="PopularAnime imgAnime" src="../img/9253.jpg">
+            <img class="PopularAnime imgAnime" src="../img/47790.jpg">
+            <img class="PopularAnime imgAnime" src="../img/48569.jpg">
+
         </div>
     </div>
     <!-- <div class="scheduleAndOngoings"> -->
@@ -101,30 +88,17 @@
         </ul>
     </div> -->
     <!-- </div> -->
-<div class="ongoings">
-    <h2 class="textOngoing">Онгоинги</h2>
-    <div class="imgongoings">
-        @{
-            var mangasOngoings = Model.Mangas.Where(a => a.Status == "Онгоинг").Take(8).Select(a => a).ToList();
-            for (Int32 i = 0; i < mangasOngoings.Count; i++)
-            {
-                <a asp-page="/Mangas/Manga" asp-route-mangaId="@mangasOngoings[i].Id">
-                    @if (mangasOngoings[i].MainImage != null)
-                    {
-                        <img class="imgAnime"
-                             src="data:image/jpeg;base64,@(Convert.ToBase64String(mangasOngoings[i].MainImage))"
-                             alt="@mangasOngoings[i].Name"
-                             title="@mangasOngoings[i].Name" />
-                    }
-                    else
-                    {
-                        <img class="imgAnime"
-                             alt="@mangasOngoings[i].Name"
-                             title="@mangasOngoings[i].Name" />
-                    }
-                </a>
-            }
-        }
+    <div class="ongoings">
+        <h2 class="textOngoing">Онгоинги</h2>
+        <div class="imgongoings">
+            <a href="animeTitle.html"><img class="imgAnime" src="../img/38524.jpg"></a>
+            <a href="animeTitle.html"><img class="imgAnime" src="../img/40834.jpg"></a>
+            <a href="animeTitle.html"><img class="imgAnime" src="../img/45576.jpg"></a>
+            <a href="animeTitle.html"><img class="imgAnime" src="../img/5114.jpg"></a>
+            <a href="animeTitle.html"><img class="imgAnime" src="../img/9253.jpg"></a>
+            <a href="animeTitle.html"><img class="imgAnime" src="../img/47790.jpg"></a>
+            <a href="animeTitle.html"><img class="imgAnime" src="../img/48569.jpg"></a>
+        </div>
     </div>
-</div>
+    <!-- </div> -->
 </section>

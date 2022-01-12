@@ -2,33 +2,34 @@
 @model AMR_Project.Pages.Account.ListsModel
 @{
 }
-
-<a href="" class="back">Назад</a>
-<h2>Списки аниме тайтлов</h2>
-<nav class="menuLists">
-    <a class="menuLists-item">Смотрю</a>
-    <a class="menuLists-item">В планах</a>
-    <a class="menuLists-item">Брошено</a>
-    <a class="menuLists-item">Просмотрено</a>
-    <a class="menuLists-item">Любимое</a>
-</nav>
-@{
-    var list = Model.CurrentUser.Lists.Find(l => l.Name.Equals("Watching"));
-    @foreach (var a in list.Animes)
-    {
-        <form method="post" asp-route-animeId="@a.Id" asp-route-listId="@list.Id">
-            <div class="selectList">
-                @if (a.MainImage != null)
-                {
-                    <img class="roundPicture" src="data:image/jpeg;base64,@(Convert.ToBase64String(a.MainImage.Picture))">
-                }
-                else
-                {
-                    <img class="roundPicture">
-                }
-                <span class="">@a.Name</span>
-                <button type="submit">Удалить</button>
-            </div>
-        </form>
+<section class="conteiner">
+    <a href="" class="back">Назад</a>
+    <h2>Списки аниме тайтлов</h2>
+    <nav class="menuLists">
+        <a class="menuLists-item">Смотрю</a>
+        <a class="menuLists-item">В планах</a>
+        <a class="menuLists-item">Брошено</a>
+        <a class="menuLists-item">Просмотрено</a>
+        <a class="menuLists-item">Любимое</a>
+    </nav>
+    @{
+        var list = Model.CurrentUser.Lists.Find(l => l.Name.Equals("Watching"));
+        @foreach (var a in list.Animes)
+        {
+            <form method="post" asp-route-animeId="@a.Id" asp-route-listId="@list.Id">
+                <div class="selectList">
+                    @if (a.MainImage != null)
+                    {
+                        <img class="roundPicture" src="data:image/jpeg;base64,@(Convert.ToBase64String(a.MainImage.Picture))">
+                    }
+                    else
+                    {
+                        <img class="roundPicture">
+                    }
+                    <span class="">@a.Name</span>
+                    <button type="submit">Удалить</button>
+                </div>
+            </form>
+        }
     }
-}
+</section>

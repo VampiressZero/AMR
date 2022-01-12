@@ -10,43 +10,27 @@
     <header>
         <a asp-page="/Index" class="logo">AMR</a>
         <nav class="AMR_links">
-            <a class="AMR_link" asp-page="/AllAnime">Аниме</a>
-            <a class="AMR_link" asp-page="/Manga">Манга</a>
-            <a class="AMR_link" asp-page="/Ranobe">Ранобе</a>
+            <a class="AMR_link" asp-page="/Index">Аниме</a>
+            <a class="AMR_link" asp-page="/Mangas/MainManga">Манга</a>
+            <a class="AMR_link" asp-page="/Ranobes/MainRanobe">Ранобе</a>
         </nav>
         <input class="search" type="search" placeholder="Поиск по сайту">
         <partial name="_LoginPartial" />
     </header>
-    <section class="conteiner">
         @RenderBody()
-    </section>
-    <section class="sectionAuthorization displayNone">
+    @*<section class="sectionAuthorization displayNone">
         <div class="popup-close">&times;</div>
         <h1 class="textReg">Авторизация</h1>
-        <div class="authorization">
-            <h3>Никнейм</h3>
-            <input type="text" name="" id="" placeholder="Введите никнейм">
-            <h3>Пароль</h3>
-            <input type="password" name="" id="" placeholder="Введите пароль">
-            <button>Войти</button>
-        </div>
-    </section>
-    <section class="sectionRegistration displayNone">
-        <div class="popup-close">&times;</div>
-        <h1 class="textReg">Регистрация</h1>
-        <div class="registration">
-            <h3>Никнейм</h3>
-            <input type="text" name="" id="" placeholder="Введите никнейм">
-            <h3>Почта</h3>
-            <input type="email" name="" id="" placeholder="Введите почту">
-            <h3>Пароль</h3>
-            <input type="password" name="" id="" placeholder="Введите пароль">
-            <h3>Повторите пароль</h3>
-            <input type="password" name="" id="" placeholder="Повторите пароль">
-            <!--<span>Пароли не совпадают</span>-->
-            <button>Зарегистрироваться</button>
-        </div>
-    </section>
+        <form method="post">
+            <div class="authorization">
+                <h3>Никнейм</h3>
+                <input asp-for="Input.UserName" id="" placeholder="Введите никнейм">
+                <h3>Пароль</h3>
+                <input asp-for="Input.Password" id="" placeholder="Введите пароль">
+                <button type="submit">Войти</button>
+            </div>
+        </form>
+    </section>*@
 
         <footer>
         </footer>

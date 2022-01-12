@@ -3,68 +3,72 @@
 @{
 }
 @using Microsoft.AspNetCore.Identity;
-@using AMR_Project.Models; 
+@using AMR_Project.Models;
 @inject UserManager<User> userManager;
-<h1 class="textReg">Профиль</h1>
-@{ 
-    var user = await userManager.GetUserAsync(User);
-    if (user.UserName.Equals("Admin"))
-    {
-        <a asp-page="/Admin/Admin">Admin page</a>
-    }
-}
-<div class="infoAccount">
-    <h3>Никнейм: </h3>
-    <h3>@Model.CurrentUser.UserName</h3>
-    <h3>Почта: </h3>
-    <h3>@Model.CurrentUser.Email</h3>
-    <form method="post" class="infoAccount">
-        <h3>Текущий пароль: </h3>
-        <input asp-for="Input.CurrentPassword">
-        <h3>Новый пароль: </h3>
-        <input asp-for="Input.NewPassword">
-        <h3>Повторите новый пароль: </h3>
-        <input asp-for="Input.NewPasswordConfirm">
-        <button type="submit">Сменить пароль</button>
-    </form>
-</div>
-<div class="profileLists">
-    <div class="divList-item">
-        <p class="categoryList">Аниме</p>
-        <ul class="nameLists">
-            <a asp-page="/Account/Lists">
-            <li class="nameList-item">Смотрю (
-                @if (Model.CurrentUser.Lists.Count != 0 && Model.CurrentUser.Lists != null)
-                {
-                    @Model.CurrentUser.Lists.Find(l => l.Name.Equals("Watching")).Animes.Count
-                }
-                )</li>
-            </a>
-            <li class="nameList-item">В планах (456)</li>
-            <li class="nameList-item">Брошено</li>
-            <li class="nameList-item">Просмотрено</li>
-            <li class="nameList-item">Любимое</li>
-        </ul>
-    </div>
-    <div class="divList-item">
-        <p class="categoryList">Манга</p>
-        <ul class="nameLists">
-            <li class="nameList-item">Читаю</li>
-            <li class="nameList-item">В планах</li>
-            <li class="nameList-item">Брошено</li>
-            <li class="nameList-item">Прочитанно</li>
-            <li class="nameList-item">Любимое</li>
-        </ul>
-    </div>
-    <div class="divList-item">
-        <p class="categoryList">Ранобе</p>
-        <ul class="nameLists">
-            <li class="nameList-item">Читаю</li>
-            <li class="nameList-item">В планах</li>
-            <li class="nameList-item">Брошено</li>
-            <li class="nameList-item">Прочитанно</li>
-            <li class="nameList-item">Любимое</li>
-        </ul>
-    </div>
-</div>
+    <section class="conteiner">
+        <h1 class="textReg">Профиль</h1>
+        @{
+            var user = await userManager.GetUserAsync(User);
+            if (user.UserName.Equals("Admin"))
+            {
+                <a asp-page="/Admin/Admin">Admin page</a>
+            }
+        }
+        <div class="infoAccount">
+            <h3>Никнейм: </h3>
+            <h3>@Model.CurrentUser.UserName</h3>
+            <h3>Почта: </h3>
+            <h3>@Model.CurrentUser.Email</h3>
+            <form method="post" class="infoAccount">
+                <h3>Текущий пароль: </h3>
+                <input asp-for="Input.CurrentPassword">
+                <h3>Новый пароль: </h3>
+                <input asp-for="Input.NewPassword">
+                <h3>Повторите новый пароль: </h3>
+                <input asp-for="Input.NewPasswordConfirm">
+                <button type="submit">Сменить пароль</button>
+            </form>
+        </div>
+        <div class="profileLists">
+            <div class="divList-item">
+                <p class="categoryList">Аниме</p>
+                <ul class="nameLists">
+                    <a asp-page="/Account/Lists">
+                    <li class="nameList-item">
+                        Смотрю (
+                        @if (Model.CurrentUser.Lists.Count != 0 && Model.CurrentUser.Lists != null)
+                        {
+                            @Model.CurrentUser.Lists.Find(l => l.Name.Equals("Watching")).Animes.Count
+                        }
+                        )
+                    </li>
+                    </a>
+                    <li class="nameList-item">В планах (456)</li>
+                    <li class="nameList-item">Брошено</li>
+                    <li class="nameList-item">Просмотрено</li>
+                    <li class="nameList-item">Любимое</li>
+                </ul>
+            </div>
+            <div class="divList-item">
+                <p class="categoryList">Манга</p>
+                <ul class="nameLists">
+                    <li class="nameList-item">Читаю</li>
+                    <li class="nameList-item">В планах</li>
+                    <li class="nameList-item">Брошено</li>
+                    <li class="nameList-item">Прочитанно</li>
+                    <li class="nameList-item">Любимое</li>
+                </ul>
+            </div>
+            <div class="divList-item">
+                <p class="categoryList">Ранобе</p>
+                <ul class="nameLists">
+                    <li class="nameList-item">Читаю</li>
+                    <li class="nameList-item">В планах</li>
+                    <li class="nameList-item">Брошено</li>
+                    <li class="nameList-item">Прочитанно</li>
+                    <li class="nameList-item">Любимое</li>
+                </ul>
+            </div>
+        </div>
 
+        </section>

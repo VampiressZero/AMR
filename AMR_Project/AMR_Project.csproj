@@ -39,8 +39,4 @@
     </PackageReference>
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Pages\Ranobes\" />
-  </ItemGroup>
-
 </Project>

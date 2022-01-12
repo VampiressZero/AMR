@@ -1,142 +1,144 @@
-﻿@page "/Manga/{MangaId}"
+﻿@page "/Mangas/{MangaId}"
 @model AMR_Project.Pages.Mangas.MangaModel
 @{
 }
+<section class="conteiner">
+    <div class="title">
+        <div>
 
-<div class="title">
-    <div>
-
-        @{
-            if (Model.Manga.MainImage != null)
-            {
-                <img class="imgTitle"
-                     src="data:image/jpeg;base64,@(Convert.ToBase64String(Model.Manga.MainImage))"
-                     alt="@Model.Manga.Name"
-                     title="@Model.Manga.Name" />
-            }
-            else
-            {
-                <img class="imgTitle"
-                     alt="@Model.Manga.Name"
-                     title="@Model.Manga.Name" />
-            }
-        }
-        <form method="post">
-            <input name="Rate" type="number" />
-            <button type="submit">Submit</button>
-        </form>
-        <form method="post" asp-page-handler="Select">
-            <select name="selectList" class="listOfLists" onchange="this.form.submit()">
-                <option selected>Добавить в список</option>
-                <option value="Watching">Смотрю</option>
-                <option value="Dropped">Брошено</option>
-                <option value="Planned">Запланировано</option>
-                <option value="Watched">Просмотренно</option>
-            </select>
-        </form>
-    </div>
-    <div>
-        <h1>@Model.Manga.Name / @Model.Manga.OriginalName</h1>
-        <p>Рейтинг: @Model.AvgRating Кол-во голосов: @Model.Manga.RatingPeopleCount</p>
-        <hr>
-        <nav class="menuTitle">
-            <span class="menuTitle-item" id="menuInfo">Информация</span>
-            <span class="menuTitle-item" id="menuChapters">Главы</span>
-            <span class="menuTitle-item" id="menuComments">Комментарии</span>
-        </nav>
-        <div class="columnInfoTitle">
-            <div class="nameInfoTitle">
-                <p>Альтернативные названия</p>
-                <p>Тип</p>
-                @if (Model.Manga.PublishType != null)
+            @{
+                if (Model.Manga.MainImage != null)
                 {
-                    <p>Тип выпуска</p>
+                    <img class="imgTitle"
+                         src="data:image/jpeg;base64,@(Convert.ToBase64String(Model.Manga.MainImage))"
+                         alt="@Model.Manga.Name"
+                         title="@Model.Manga.Name" />
                 }
-                <p>Год релиза</p>
-                <p>Загружено глав</p>
-                <p>Статус</p>
-                <p>Статус перевода</p>
-                <p>Жанры</p>
-                <p>Рейтинг MPAA</p>
-                <p>Теги</p>
-                <p>Автор</p>
-                <p>Художник</p>
-                <p>Издательство</p>
-                <p>Переводчик</p>
-            </div>
-            <div>
-                <p>@Model.Manga.JapanName</p>
-                <p>@Model.Manga.Type</p>
-                @if (Model.Manga.PublishType != null)
+                else
                 {
-                    <p>@Model.Manga.PublishType</p>
+                    <img class="imgTitle"
+                         alt="@Model.Manga.Name"
+                         title="@Model.Manga.Name" />
                 }
-                <p>@Model.Manga.Year</p>
-                <p>@Model.Manga.ChapterCount</p>
-                <p>@Model.Manga.Status</p>
-                <p>@Model.Manga.StatusOfTranslate</p>
-                <p>
-                    @foreach (var genre in Model.Manga.Genres)
-                    {
-                        <label>@genre.Name</label>
-                    }
-                </p>
-                <p>@Model.Manga.AgeRating</p>
-                <p>
-                    @foreach (var tag in Model.Manga.Tags)
-                    {
-                        <label>@tag.Name</label>
-                    }
-                </p>
-                <p>@Model.Manga.Author.Name</p>
-                <p>@Model.Manga.Painter</p>
-                <p>@Model.Manga.Publisher</p>
-                <p>@Model.Manga.Translator.Name</p>
-
-            </div>
+            }
+            <a href="readRanobe.html" class="buttonRead">Читать</a>
+            <form method="post">
+                <input name="Rate" type="number" />
+                <button type="submit">Submit</button>
+            </form>
+            <form method="post" asp-page-handler="Select">
+                <select name="selectList" class="listOfLists" onchange="this.form.submit()">
+                    <option selected>Добавить в список</option>
+                    <option value="Watching">Смотрю</option>
+                    <option value="Dropped">Брошено</option>
+                    <option value="Planned">Запланировано</option>
+                    <option value="Watched">Просмотренно</option>
+                </select>
+            </form>
         </div>
-        <div class="columnChaptersTitle displayNone">
-            <div class="nameChapterTitle">
-                <p><a>Том 1 Глава 1</a></p>
-                <p><a>Том 1 Глава 2</a></p>
-                <p><a>Том 1 Глава 3</a></p>
-                <p><a>Том 1 Глава 4</a></p>
-                <p><a>Том 1 Глава 5</a></p>
-                <p><a>Том 1 Глава 6</a></p>
-                <p><a>Том 2 Глава 7 - Студенческий совет</a></p>
-                <p><a>Том 2 Глава 8 - Стресс и антистресс</a></p>
-                <p><a>Том 2 Глава 9 - Счастливый мартовский День рождения</a></p>
-            </div>
-            <div class="translatorChaptersTitle">
-                <p>&#x263A; admin</p>
-                <p>&#x263A; admin</p>
-                <p>&#x263A; admin</p>
-                <p>&#x263A; admin</p>
-                <p>&#x263A; admin</p>
-                <p>&#x263A; admin</p>
-                <p>&#x263A; admin</p>
-                <p>&#x263A; admin</p>
-                <p>&#x263A; admin</p>
-            </div>
-            <div class="dateAddedChapterTitle">
-                <p>11.01.2022</p>
-                <p>11.01.2022</p>
-                <p>11.01.2022</p>
-                <p>11.01.2022</p>
-                <p>11.01.2022</p>
-                <p>11.01.2022</p>
-                <p>11.01.2022</p>
-                <p>11.01.2022</p>
-                <p>11.01.2022</p>
-            </div>
+        <div>
+            <h1>@Model.Manga.Name / @Model.Manga.OriginalName</h1>
+            <p>Рейтинг: @Model.AvgRating Кол-во голосов: @Model.Manga.RatingPeopleCount</p>
+            <hr>
+            <nav class="menuTitle">
+                <span class="menuTitle-item" id="menuInfo">Информация</span>
+                <span class="menuTitle-item" id="menuChapters">Главы</span>
+                <span class="menuTitle-item" id="menuComments">Комментарии</span>
+            </nav>
+            <div class="columnInfoTitle">
+                <div class="nameInfoTitle">
+                    <p>Альтернативные названия</p>
+                    <p>Тип</p>
+                    @if (Model.Manga.PublishType != null)
+                    {
+                        <p>Тип выпуска</p>
+                    }
+                    <p>Год релиза</p>
+                    <p>Загружено глав</p>
+                    <p>Статус</p>
+                    <p>Статус перевода</p>
+                    <p>Жанры</p>
+                    <p>Рейтинг MPAA</p>
+                    <p>Теги</p>
+                    <p>Автор</p>
+                    <p>Художник</p>
+                    <p>Издательство</p>
+                    <p>Переводчик</p>
+                </div>
+                <div>
+                    <p>@Model.Manga.JapanName</p>
+                    <p>@Model.Manga.Type</p>
+                    @if (Model.Manga.PublishType != null)
+                    {
+                        <p>@Model.Manga.PublishType</p>
+                    }
+                    <p>@Model.Manga.Year</p>
+                    <p>@Model.Manga.ChapterCount</p>
+                    <p>@Model.Manga.Status</p>
+                    <p>@Model.Manga.StatusOfTranslate</p>
+                    <p>
+                        @foreach (var genre in Model.Manga.Genres)
+                        {
+                            <label>@genre.Name</label>
+                        }
+                    </p>
+                    <p>@Model.Manga.AgeRating</p>
+                    <p>
+                        @foreach (var tag in Model.Manga.Tags)
+                        {
+                            <label>@tag.Name</label>
+                        }
+                    </p>
+                    <p>@Model.Manga.Author.Name</p>
+                    <p>@Model.Manga.Painter</p>
+                    <p>@Model.Manga.Publisher</p>
+                    <p>@Model.Manga.Translator.Name</p>
 
-        </div>
-        <div class="columnCommentsTitle displayNone">
+                </div>
+            </div>
+            <div class="columnChaptersTitle displayNone">
+                <div class="nameChapterTitle">
+                    <p><a>Том 1 Глава 1</a></p>
+                    <p><a>Том 1 Глава 2</a></p>
+                    <p><a>Том 1 Глава 3</a></p>
+                    <p><a>Том 1 Глава 4</a></p>
+                    <p><a>Том 1 Глава 5</a></p>
+                    <p><a>Том 1 Глава 6</a></p>
+                    <p><a>Том 2 Глава 7 - Студенческий совет</a></p>
+                    <p><a>Том 2 Глава 8 - Стресс и антистресс</a></p>
+                    <p><a>Том 2 Глава 9 - Счастливый мартовский День рождения</a></p>
+                </div>
+                <div class="translatorChaptersTitle">
+                    <p>&#x263A; admin</p>
+                    <p>&#x263A; admin</p>
+                    <p>&#x263A; admin</p>
+                    <p>&#x263A; admin</p>
+                    <p>&#x263A; admin</p>
+                    <p>&#x263A; admin</p>
+                    <p>&#x263A; admin</p>
+                    <p>&#x263A; admin</p>
+                    <p>&#x263A; admin</p>
+                </div>
+                <div class="dateAddedChapterTitle">
+                    <p>11.01.2022</p>
+                    <p>11.01.2022</p>
+                    <p>11.01.2022</p>
+                    <p>11.01.2022</p>
+                    <p>11.01.2022</p>
+                    <p>11.01.2022</p>
+                    <p>11.01.2022</p>
+                    <p>11.01.2022</p>
+                    <p>11.01.2022</p>
+                </div>
 
+            </div>
+            <div class="columnCommentsTitle displayNone">
+
+            </div>
         </div>
     </div>
-</div>
-<div class="description">
-    <h2>Описание</h2>
-    <p>@Model.Manga.Description</p>
-</div>
+    <div class="description">
+        <h2>Описание</h2>
+        <p>@Model.Manga.Description</p>
+    </div>
+    </section>

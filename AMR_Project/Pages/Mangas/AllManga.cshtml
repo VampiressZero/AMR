@@ -1,32 +1,27 @@
-﻿@page "/Animes"
-@model AMR_Project.Pages.Animes.AllAnimeModel
+﻿@page "Mangas"
+@model AMR_Project.Pages.Mangas.AllMangaModel
 @{
-    void Check_Clicked(Object sender, EventArgs e)
-    {
-
-
-    }
 }
 <section class="conteiner">
     <div class="allAnimeFilter">
         <div class="allAnime">
             @{
-                var animes = Model.Animes.OrderByDescending(a => a.Rating).Select(a => a).ToList();
-                for (Int32 i = 0; i < animes.Count; i++)
+                var mangas = Model.Mangas.OrderByDescending(a => a.Rating).Select(a => a).ToList();
+                for (Int32 i = 0; i < mangas.Count; i++)
                 {
-                    <a asp-page="/Animes/Anime" asp-route-AnimeId="@animes[i].Id">
-                        @if (animes[i].MainImage != null)
+                    <a asp-page="/Mangas/Manga" asp-route-mangaId="@mangas[i].Id">
+                        @if (mangas[i].MainImage != null)
                         {
                             <img class="imgAnime"
-                                 src="data:image/jpeg;base64,@(Convert.ToBase64String(animes[i].MainImage.Picture))"
-                                 alt="@animes[i].Name"
-                                 title="@animes[i].Name" />
+                                 src="data:image/jpeg;base64,@(Convert.ToBase64String(mangas[i].MainImage))"
+                                 alt="@mangas[i].Name"
+                                 title="@mangas[i].Name" />
                         }
                         else
                         {
                             <img class="imgAnime"
-                                 alt="@animes[i].Name"
-                                 title="@animes[i].Name" />
+                                 alt="@mangas[i].Name"
+                                 title="@mangas[i].Name" />
                         }
                     </a>
                 }
@@ -34,17 +29,11 @@
         </div>
         <div class="filter">
             <!-- <h2>Фильтр</h2> -->
-            <form method="post">
+            <form action="">
                 <h3>Статус</h3>
                 <input type="checkbox" name="" id="">Онгоинг<span data-title="Произведение ещё выходит на данный момент" class="hint">?</span><br>
                 <input type="checkbox" name="" id="">Анонс<span class="hint">?</span><br>
                 <input type="checkbox" name="" id="">Вышел<span class="hint">?</span><br>
-                <h3>Тип</h3>
-                <input type="checkbox" name="" id="">ТВ сериал<span class="hint">?</span><br>
-                <input type="checkbox" name="" id="">Фильм<span class="hint">?</span><br>
-                <input type="checkbox" name="" id="">OVA<span class="hint">?</span><br>
-                <input type="checkbox" name="" id="">Спешл<span class="hint">?</span><br>
-                <input type="checkbox" name="" id="">ONA<span class="hint">?</span><br>
                 <h3>Рейтинг</h3>
                 <input type="checkbox" name="" id="">G<span class="hint">?</span><br>
                 <input type="checkbox" name="" id="">PG<span class="hint">?</span><br>
@@ -57,7 +46,13 @@
                 <input type="checkbox" name="" id="">Романтика<span class="hint">?</span><br>
                 <input type="checkbox" name="" id="">Детектив<span class="hint">?</span><br>
                 <input type="checkbox" name="" id="">Повседневность<span class="hint">?</span><br>
+                <h3>Теги</h3>
+                <input type="checkbox" name="" id="">ГГ девушка<span class="hint">?</span><br>
+                <input type="checkbox" name="" id="">ГГ парень<span class="hint">?</span><br>
+                <input type="checkbox" name="" id="">Другой мир<span class="hint">?</span><br>
+                <!-- Остальные фильтры добавь по желанию -->
+
             </form>
         </div>
     </div>
-</section>
+    </section>
