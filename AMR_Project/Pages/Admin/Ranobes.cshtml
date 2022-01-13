@@ -1,0 +1,10 @@
+﻿@page
+@model AMR_Project.Pages.Admin.RanobesModel
+@{
+}
+<section class="conteiner">
+    @foreach (var r in Model.Ranobes)
+    {
+        <p>@r.Name <a asp-page="AddRanobePage" asp-route-id="@r.Id">Add page</a></p>
+    }
+    </section>

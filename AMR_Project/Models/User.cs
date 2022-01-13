@@ -10,5 +10,6 @@ namespace AMR_Project.Models
     {
         public List<ListAnimes> Lists { get; set; }
         public List<ListMangas> ListMangas { get; set; }
+        public List<ListRanobes> ListRanobes { get; set; }
     }
 }

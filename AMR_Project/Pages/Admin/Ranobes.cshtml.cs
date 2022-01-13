@@ -8,13 +8,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace AMR_Project.Pages.Ranobes
+namespace AMR_Project.Pages.Admin
 {
-    public class MainRanobeModel : PageModel
+    public class RanobesModel : PageModel
     {
         private readonly ApplicationContext _db;
 
-        public MainRanobeModel(ApplicationContext db)
+        public RanobesModel(ApplicationContext db)
         {
             _db = db;
         }

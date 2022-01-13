@@ -4,14 +4,16 @@ using AMR_Project.DAL;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace AMR_Project.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
-    partial class ApplicationContextModelSnapshot : ModelSnapshot
+    [Migration("20220113063215_RanobeFixed")]
+    partial class RanobeFixed
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -203,12 +205,7 @@ namespace AMR_Project.Migrations
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("UserId")
-                        .HasColumnType("nvarchar(450)");
-
                     b.HasKey("Id");
-
-                    b.HasIndex("UserId");
 
                     b.ToTable("ListRanobes");
                 });
@@ -408,9 +405,6 @@ namespace AMR_Project.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("ChapterNumber")
-                        .HasColumnType("int");
-
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
@@ -419,9 +413,6 @@ namespace AMR_Project.Migrations
 
                     b.Property<string>("Text")
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("Tome")
-                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
@@ -800,13 +791,6 @@ namespace AMR_Project.Migrations
                         .HasForeignKey("UserId");
                 });
 
-            modelBuilder.Entity("AMR_Project.Models.ListRanobes", b =>
-                {
-                    b.HasOne("AMR_Project.Models.User", null)
-                        .WithMany("ListRanobes")
-                        .HasForeignKey("UserId");
-                });
-
             modelBuilder.Entity("AMR_Project.Models.Manga", b =>
                 {
                     b.HasOne("AMR_Project.Models.MangaAuthor", "Author")
@@ -1040,8 +1024,6 @@ namespace AMR_Project.Migrations
             modelBuilder.Entity("AMR_Project.Models.User", b =>
                 {
                     b.Navigation("ListMangas");
-
-                    b.Navigation("ListRanobes");
 
                     b.Navigation("Lists");
                 });

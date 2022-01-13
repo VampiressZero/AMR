@@ -1,24 +1,40 @@
-﻿@page "/Ranobes/{Id}"
+﻿@page "/Ranobes/{RanobeId}"
 @model AMR_Project.Pages.Ranobes.RanobeModel
 @{
 }
 <section class="conteiner">
     <div class="title">
         <div>
-            <img class="imgTitle" src="../img/1324567.jpg" alt="Атака титанов" title="Атака титанов" srcset="">
+
+            @{
+                if (Model.Ranobe.MainImage != null)
+                {
+                    <img class="imgTitle"
+                         src="data:image/jpeg;base64,@(Convert.ToBase64String(Model.Ranobe.MainImage))"
+                         alt="@Model.Ranobe.Name"
+                         title="@Model.Ranobe.Name"/>
+                }
+                else
+                {
+                    <img class="imgTitle"
+                         alt="@Model.Ranobe.Name"
+                         title="@Model.Ranobe.Name"/>
+                }
+            }
             <a class="buttonRead" asp-page="/Ranobes/RanobeRead">Читать</a>
-            <form action="">
-                <select class="listOfLists">
+            <form method="post" asp-page-handler="Select">
+                <select name="selectList" class="listOfLists" onchange="this.form.submit()">
                     <option selected>Добавить в список</option>
-                    <option value="">Смотрю</option>
-                    <option value="">Брошено</option>
-                    <option value="">Запланировано</option>
-                    <option value="">Просмотренно</option>
+                    <option value="Watching">Смотрю</option>
+                    <option value="Dropped">Брошено</option>
+                    <option value="Planned">Запланировано</option>
+                    <option value="Watched">Просмотренно</option>
                 </select>
             </form>
         </div>
         <div>
-            <h1>Хоримия</h1>
+            <h1>@Model.Ranobe.Name / @Model.Ranobe.OriginalName</h1>
+            <p>Рейтинг: @Model.AvgRating Кол-во голосов: @Model.Ranobe.RatingPeopleCount</p>
             <hr>
             <nav class="menuTitle">
                 <span class="menuTitle-item" id="menuInfo">Информация</span>
@@ -29,28 +45,64 @@
                 <div class="nameInfoTitle">
                     <p>Альтернативные названия</p>
                     <p>Тип</p>
+                    @if (Model.Ranobe.PublishType != null)
+                    {
+                        <p>Тип выпуска</p>
+                    }
+                    <p>Год релиза</p>
                     <p>Загружено глав</p>
                     <p>Статус</p>
-                    <p>Жанр</p>
-                    <p>Первоисточник</p>
-                    <p>Студия</p>
+                    <p>Статус перевода</p>
+                    <p>Жанры</p>
                     <p>Рейтинг MPAA</p>
-                    <p>Бла-бла-бла</p>
+                    <p>Теги</p>
+                    <p>Автор</p>
+                    <p>Издательство</p>
+                    <p>Переводчик</p>
                 </div>
                 <div>
-                    <p>ホリミヤ</p>
-                    <p>Манга</p>
-                    <p>128</p>
-                    <p>Вышел</p>
-                    <p>Романтика, комедия, школа</p>
-                    <p>Манга</p>
-                    <p>Wit Studio</p>
-                    <p>NC-17</p>
-                    <p>Бла-бла-бла</p>
+                    <p>@Model.Ranobe.JapanName</p>
+                    <p>@Model.Ranobe.Type</p>
+                    @if (Model.Ranobe.PublishType != null)
+                    {
+                        <p>@Model.Ranobe.PublishType</p>
+                    }
+                    <p>@Model.Ranobe.Year</p>
+                    <p>@Model.Ranobe.ChapterCount</p>
+                    <p>@Model.Ranobe.Status</p>
+                    <p>@Model.Ranobe.StatusOfTranslate</p>
+                    <p>
+                        @foreach (var genre in Model.Ranobe.Genres)
+                        {
+                            <label>@genre.Name</label>
+                        }
+                    </p>
+                    <p>@Model.Ranobe.AgeRating</p>
+                    <p>
+                        @foreach (var tag in Model.Ranobe.Tags)
+                        {
+                            <label>@tag.Name</label>
+                        }
+                    </p>
+                    <p>@Model.Ranobe.Author.Name</p>
+                    <p>@Model.Ranobe.Publisher</p>
+                    <p>@Model.Ranobe.Translator.Name</p>
                 </div>
             </div>
             <div class="columnChaptersTitle displayNone">
                 <div class="nameChapterTitle">
+                    @foreach (var p in Model.Ranobe.RanobePages)
+                    {
+                        @if (p.Name != null)
+                        {
+                            <p><a>Том @p.Tome Глава @p.ChapterNumber - @p.Name</a></p>
+                        }
+                        else
+                        {
+                            <p><a>Том @p.Tome Глава @p.ChapterNumber </a></p>
+                        }
+
+                    }
                     <p><a>Том 1 Глава 1</a></p>
                     <p><a>Том 1 Глава 2</a></p>
                     <p><a>Том 1 Глава 3</a></p>
@@ -92,6 +144,6 @@
     </div>
     <div class="description">
         <h2>Описание</h2>
-        <p>Хори пытается казаться обычной старшеклассницей, тогда как на самом деле уделяет все свое время уходу за домом. Из-за постоянного отсутствия родителей-трудоголиков, девушке приходится заменять младшему брату семью, заниматься уборкой, стиркой и прочими домашними делами. Однажды она встречает человека, который, так же как и она, старается не открывать свою настоящую сторону личности в школе: Миямура — молчаливый парень в очках. Теперь им двоим есть с кем поделиться и раскрыть настоящих себя, не боясь, что об этом узнают в школе.</p>
+        <p>@Model.Ranobe.Description</p>
     </div>
     </section>

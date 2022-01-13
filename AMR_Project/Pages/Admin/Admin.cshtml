@@ -2,21 +2,19 @@
 @model AMR_Project.Pages.AdminModel
 @{
 }
+<section class="conteiner">
+    <a asp-page="AddAnime">Add anime</a><br />
+    <a asp-page="AddManga">Add manga</a><br />
+    <a asp-page="AddRanobe">Add ranobe</a><br />
+    <a asp-page="AddGenre">Add genre</a><br />
+    <a asp-page="AddTag">Add tag</a><br />
+    <a asp-page="AddDubStudio">Add dub studio</a><br />
+    <a asp-page="Ranobes">Ranobes</a><br />
 
-<a asp-page="AddAnime">Add anime</a>
-<br />
-<a asp-page="AddManga">Add manga</a>
-<br />
-<a asp-page="AddGenre">Add genre</a>
-<br />
-<a asp-page="AddTag">Add tag</a>
-<br />
-<a asp-page="AddDubStudio">Add dub studio</a>
-<br />
-
-@for (var i = 0; i < Model.Animes.Count; i++)
-{
-    <a>@Model.Animes[i].Name;</a>
-    <a asp-page="/Admin/AddScreenshots" asp-route-Id="@Model.Animes[i].Id">Add screenshots</a>
-    <br />
-}
+    @for (var i = 0; i < Model.Animes.Count; i++)
+    {
+        <a>@Model.Animes[i].Name;</a>
+        <a asp-page="/Admin/AddScreenshots" asp-route-Id="@Model.Animes[i].Id">Add screenshots</a>
+        <br />
+    }
+    </section>
