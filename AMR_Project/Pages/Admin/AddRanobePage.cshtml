@@ -3,11 +3,15 @@
 @{
 }
 <section class="conteiner">
-<form method="post">
-    <input asp-for="Input.Name" placeholder="Name" /><br />
-    <input asp-for="Input.ChapterNumber" placeholder="ChapterNumber" /><br />
-    <input asp-for="Input.Tome" placeholder="Tome" /><br />
-    <input asp-for="Input.Text" placeholder="Text" /><br />
-    <button type="submit">Add page</button>
-</form>
+    @foreach (var r in Model.Ranobe.RanobePages)
+    {
+        <p> Tome: @r.Tome Chapter: @r.ChapterNumber Name: @r.Name</p>
+    }
+    <form method="post">
+        <input asp-for="Input.Name" placeholder="Name"/><br/>
+        <input asp-for="Input.ChapterNumber" placeholder="ChapterNumber"/><br/>
+        <input asp-for="Input.Tome" placeholder="Tome"/><br/>
+        <textarea asp-for="Input.Text" placeholder="Text"></textarea><br/>
+        <button type="submit">Add page</button>
+    </form>
 </section>

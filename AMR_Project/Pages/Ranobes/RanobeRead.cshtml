@@ -1,61 +1,119 @@
-﻿@page "Ranobes/{ranobeId}/{ranobePage}"
+﻿@page "/Ranobes/{ranobeId}/{chapterNumber}"
 @model AMR_Project.Pages.Ranobes.RanobeReadModel
 @{
 }
+
+
 <section class="conteinerReadRanobe">
     <div class="readRanobe">
-        <h1><a href="ranobeTitle.html">Хоримия</a></h1>
+        <h1><a asp-page="/Ranobes/Ranobe" asp-route-ranobeId="@Model.Ranobe.Id">@Model.Ranobe.Name</a></h1>
         <div class="chapterNavigation">
-            <a href="" class="predChapter">Предыдущая глава</a>
-            <select>
-                <option>Содержание</option>
-                <option value="">Глава 1 - бла бла</option>
-                <option value="">Глава 2</option>
-                <option value="ссылка">Глава 3</option>
-                <option value="ссылка">Глава 4</option>
-                <option value="ссылка">Глава 5</option>
-                <option value="ссылка">Глава 6</option>
-            </select>
-            <a href="" class="nextChapter">Следующая глава</a>
+            @if (Model.Ranobe.RanobePages.First() == Model.RanobePage)
+            {
+
+            }
+            else
+            {
+                <a class="predChapter" asp-page="/Ranobes/RanobeRead" asp-route-ranobeId="@Model.Ranobe.Id"
+                   asp-route-chapterNumber="@(Model.RanobePage.ChapterNumber - 1)">Предыдущая глава</a>
+            }
+                <select onchange="window.location.href = this.options[this.selectedIndex].value">
+                    @foreach (var p in Model.Ranobe.RanobePages)
+                    {
+                        if (p.Name != null)
+                        {
+                            if (p.ChapterNumber == Model.RanobePage.ChapterNumber)
+                            {
+                                <option selected="" value="/Ranobes/@Model.Ranobe.Id/@p.ChapterNumber">Глава @p.ChapterNumber - @p.Name</option>
+                            }
+                            else
+                            {
+                                <option value="/Ranobes/@Model.Ranobe.Id/@p.ChapterNumber">Глава @p.ChapterNumber - @p.Name</option>
+                            }
+                        }
+                        else
+                        {
+                            if (p.ChapterNumber == Model.RanobePage.ChapterNumber)
+                            {
+                                <option selected="" value="/Ranobes/@Model.Ranobe.Id/@p.ChapterNumber">Глава @p.ChapterNumber</option>
+                            }
+                            else
+                            {
+                                <option value="/Ranobes/@Model.Ranobe.Id/@p.ChapterNumber">Глава @p.ChapterNumber</option>
+                            }
+                        }
+                    }
+                </select>
+            @if (Model.Ranobe.RanobePages.Last() == Model.RanobePage)
+            {
+
+            }
+            else
+            {
+                <a class="nextChapter" asp-page="/Ranobes/RanobeRead" asp-route-ranobeId="@Model.Ranobe.Id"
+                   asp-route-chapterNumber="@(Model.RanobePage.ChapterNumber + 1)">Следующая глава</a>
+            }
+
         </div>
-        <p>Глава 1 - бла бла</p>
+        @if (Model.RanobePage.Name != null)
+        {
+            <p>Глава @Model.RanobePage.ChapterNumber - @Model.RanobePage.Name</p>
+        }
+        else
+        {
+            <p>Глава @Model.RanobePage.ChapterNumber</p>
+        }
+        
         <font class="textChapter">
-            Графиня Юнис прикрыла рукой открытый рот. Потому что она думала, что может закричать.
-
-            Артезия не удивилась. Потому что она знала, кто придет.
-
-            Софи и Эмили протянули руку, чтобы помочь Артезии встать.
-
-            Дверь открылась.
-
-            На самом деле шагов практически не было слышно.
-
-            Но графиня Юнис почувствовала, что слышит такой звук. Присутствие императрицы было слишком велико.
-
-            Прошло 18 лет с тех пор, как императрица выходила из дворца.
-
-            Графиня Юнис знала императрицу. В детстве именно императрица была самым страшным человеком в императорском дворце.
-
-            Императрица была стара, но все еще холодна и величава.
-
-            Императрица сегодня снова была в черном платье.
-
-            Так как интерьер был сплошь наполнен украшениями для невесты, то ее траурное черное платье было еще более заметным.
-
-            - Спасибо, что пришли, Ваше Величество.
+            @Model.RanobePage.Text
         </font>
         <div class="chapterNavigation">
-            <a href="" class="predChapter">Предыдущая глава</a>
-            <select>
-                <option>Содержание</option>
-                <option value="">Глава 1 - бла бла</option>
-                <option value="">Глава 2</option>
-                <option value="ссылка">Глава 3</option>
-                <option value="ссылка">Глава 4</option>
-                <option value="ссылка">Глава 5</option>
-                <option value="ссылка">Глава 6</option>
-            </select>
-            <a href="" class="nextChapter">Следующая глава</a>
+            @if (Model.Ranobe.RanobePages.First() == Model.RanobePage)
+            {
+
+            }
+            else
+            {
+                <a class="predChapter" asp-page="/Ranobes/RanobeRead" asp-route-ranobeId="@Model.Ranobe.Id"
+                   asp-route-chapterNumber="@(Model.RanobePage.ChapterNumber - 1)">Предыдущая глава</a>
+            }
+                <select onchange="window.location.href = this.options[this.selectedIndex].value">
+                    <option>Содержание</option>
+                    @foreach (var p in Model.Ranobe.RanobePages)
+                    {
+                        if (p.Name != null)
+                        {
+                            if (p.ChapterNumber == Model.RanobePage.ChapterNumber)
+                            {
+                                <option selected="" value="/Ranobes/@Model.Ranobe.Id/@p.ChapterNumber">Глава @p.ChapterNumber - @p.Name</option>
+                            }
+                            else
+                            {
+                                <option value="/Ranobes/@Model.Ranobe.Id/@p.ChapterNumber">Глава @p.ChapterNumber - @p.Name</option>
+                            }
+                        }
+                        else
+                        {
+                            if (p.ChapterNumber == Model.RanobePage.ChapterNumber)
+                            {
+                                <option selected="" value="/Ranobes/@Model.Ranobe.Id/@p.ChapterNumber">Глава @p.ChapterNumber</option>
+                            }
+                            else
+                            {
+                                <option value="/Ranobes/@Model.Ranobe.Id/@p.ChapterNumber">Глава @p.ChapterNumber</option>
+                            }
+                        }
+                    }
+                </select>
+            @if (Model.Ranobe.RanobePages.Last() == Model.RanobePage)
+            {
+
+            }
+            else
+            {
+                <a class="nextChapter" asp-page="/Ranobes/RanobeRead" asp-route-ranobeId="@Model.Ranobe.Id"
+                   asp-route-chapterNumber="@(Model.RanobePage.ChapterNumber + 1)">Следующая глава</a>
+            }
         </div>
     </div>
 </section>

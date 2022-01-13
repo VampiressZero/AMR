@@ -21,7 +21,8 @@
                          title="@Model.Ranobe.Name"/>
                 }
             }
-            <a class="buttonRead" asp-page="/Ranobes/RanobeRead">Читать</a>
+            <a class="buttonRead" asp-page="/Ranobes/RanobeRead" asp-route-ranobeId="@Model.Ranobe.Id"
+               asp-route-chapterNumber="@Model.Ranobe.RanobePages[0].ChapterNumber">Читать</a>
             <form method="post" asp-page-handler="Select">
                 <select name="selectList" class="listOfLists" onchange="this.form.submit()">
                     <option selected>Добавить в список</option>
