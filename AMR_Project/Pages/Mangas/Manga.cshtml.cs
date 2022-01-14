@@ -26,6 +26,7 @@ namespace AMR_Project.Pages.Mangas
             Manga = _db.Find<Manga>(mangaId);
             _db.Entry(Manga).Collection(a => a.Genres).Load();
             _db.Entry(Manga).Collection(a => a.Tags).Load();
+            _db.Entry(Manga).Collection(m => m.MangaChapters).Load();
             _db.Entry(Manga).Reference(a => a.Author).Load();
             _db.Entry(Manga).Reference(a => a.Translator).Load();
             if (Manga.RatingPeopleCount == 0)

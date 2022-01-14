@@ -20,7 +20,8 @@
                          title="@Model.Manga.Name" />
                 }
             }
-            <a href="readRanobe.html" class="buttonRead">Читать</a>
+            <a class="buttonRead" asp-page="/Mangas/MangaReading" asp-route-mangaId="@Model.Manga.Id"
+               asp-route-chapter="@Model.Manga.MangaChapters[0].Chapter" >Читать</a>
             <form method="post">
                 <input name="Rate" type="number" />
                 <button type="submit">Submit</button>

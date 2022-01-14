@@ -5,48 +5,27 @@
 <section class="conteiner">
     <div class="allAnimeFilter">
         <div class="allAnime">
-            <img class="imgAnime" src="img/38524.jpg">
-            <img class="imgAnime" src="img/40834.jpg">
-            <img class="imgAnime" src="img/45576.jpg">
-            <img class="imgAnime" src="img/5114.jpg">
-            <img class="imgAnime" src="img/9253.jpg">
-            <img class="imgAnime" src="img/47790.jpg">
-            <img class="imgAnime" src="img/48569.jpg">
-            <img class="imgAnime" src="img/38524.jpg">
-            <img class="imgAnime" src="img/40834.jpg">
-            <img class="imgAnime" src="img/45576.jpg">
-            <img class="imgAnime" src="img/5114.jpg">
-            <img class="imgAnime" src="img/9253.jpg">
-            <img class="imgAnime" src="img/47790.jpg">
-            <img class="imgAnime" src="img/48569.jpg">
-            <img class="imgAnime" src="img/38524.jpg">
-            <img class="imgAnime" src="img/40834.jpg">
-            <img class="imgAnime" src="img/45576.jpg">
-            <img class="imgAnime" src="img/5114.jpg">
-            <img class="imgAnime" src="img/9253.jpg">
-            <img class="imgAnime" src="img/47790.jpg">
-            <img class="imgAnime" src="img/48569.jpg">
-            <img class="imgAnime" src="img/38524.jpg">
-            <img class="imgAnime" src="img/40834.jpg">
-            <img class="imgAnime" src="img/45576.jpg">
-            <img class="imgAnime" src="img/5114.jpg">
-            <img class="imgAnime" src="img/9253.jpg">
-            <img class="imgAnime" src="img/47790.jpg">
-            <img class="imgAnime" src="img/48569.jpg">
-            <img class="imgAnime" src="img/38524.jpg">
-            <img class="imgAnime" src="img/40834.jpg">
-            <img class="imgAnime" src="img/45576.jpg">
-            <img class="imgAnime" src="img/5114.jpg">
-            <img class="imgAnime" src="img/9253.jpg">
-            <img class="imgAnime" src="img/47790.jpg">
-            <img class="imgAnime" src="img/48569.jpg">
-            <img class="imgAnime" src="img/38524.jpg">
-            <img class="imgAnime" src="img/40834.jpg">
-            <img class="imgAnime" src="img/45576.jpg">
-            <img class="imgAnime" src="img/5114.jpg">
-            <img class="imgAnime" src="img/9253.jpg">
-            <img class="imgAnime" src="img/47790.jpg">
-            <img class="imgAnime" src="img/48569.jpg">
+            @{
+                var ranobes = Model.Ranobes.OrderByDescending(a => a.Rating).Select(a => a).ToList();
+                for (Int32 i = 0; i < ranobes.Count; i++)
+                {
+                    <a asp-page="/Ranobes/Ranobe" asp-route-ranobeId="@ranobes[i].Id">
+                        @if (ranobes[i].MainImage != null)
+                        {
+                            <img class="imgAnime"
+                                 src="data:image/jpeg;base64,@(Convert.ToBase64String(ranobes[i].MainImage))"
+                                 alt="@ranobes[i].Name"
+                                 title="@ranobes[i].Name" />
+                        }
+                        else
+                        {
+                            <img class="imgAnime"
+                                 alt="@ranobes[i].Name"
+                                 title="@ranobes[i].Name" />
+                        }
+                    </a>
+                }
+            }
         </div>
         <div class="filter">
             <!-- <h2>Фильтр</h2> -->

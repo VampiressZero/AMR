@@ -1,0 +1,58 @@
+﻿@page "/Mangas/{mangaId}/{chapter}"
+@model AMR_Project.Pages.Mangas.MangaReadingModel
+@{
+}
+<section class="conteinerReadRanobe">
+    <div class="readRanobe">
+        <h1><a asp-page="/Mangas/Manga" asp-route-mangaId="@Model.Manga.Id">@Model.Manga.Name</a></h1>
+        <div class="chapterNavigation">
+            <select onchange="window.location.href = this.options[this.selectedIndex].value">
+                @foreach (var c in Model.Manga.MangaChapters)
+                {
+                    if (c.Name != null)
+                    {
+                        if (c.Chapter == Model.Chapter.Chapter)
+                        {
+                            <option selected value="/Mangas/@Model.Manga.Id/@c.Chapter">Глава @c.Chapter - @c.Name</option>
+                        }
+                        else
+                        {
+                            <option value="/Mangas/@Model.Manga.Id/@c.Chapter">Глава @c.Chapter - @c.Name</option>
+                        }
+                    }
+                    else
+                    {
+                        if (c.Chapter == Model.Chapter.Chapter)
+                        {
+                            <option selected value="/Mangas/@Model.Manga.Id/@c.Chapter">Глава @c.Chapter</option>
+                        }
+                        else
+                        {
+                            <option value="/Mangas/@Model.Manga.Id/@c.Chapter">Глава @c.Chapter</option>
+                        }
+                    }
+                }
+            </select>
+            <select class="mangaPage">
+                @for (var i = 1; i <= Model.Chapter.Images.Count; i++)
+                {
+                    <option class="mangaPage-item" value="@i">@i</option>
+                }
+            </select>
+        </div>
+        <div class="sliderForReading">
+            @foreach (var img in Model.Chapter.Images)
+            {
+                @if (img.Picture != null)
+                {
+                    <img class="sliderForReading-img"
+                         src="data:image/jpeg;base64,@(Convert.ToBase64String(img.Picture))" />
+                }
+                else
+                {
+                    <img class="sliderForReading-img" />
+                }
+            }
+        </div>
+    </div>
+</section>

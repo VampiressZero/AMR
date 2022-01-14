@@ -1,0 +1,17 @@
+﻿@page "{id}"
+@model AMR_Project.Pages.Admin.AddMangaChapterModel
+@{
+}
+<section class="conteiner">
+    @foreach (var r in Model.Manga.MangaChapters)
+    {
+        <p> Tome: @r.Tome Chapter: @r.Chapter Name: @r.Name</p>
+    }
+<form method="post" enctype="multipart/form-data">
+    <label asp-for="Input.Name"></label><br /><input asp-for="Input.Name" placeholder="Name" /><br />
+    <label asp-for="Input.Tome"></label><br /><input asp-for="Input.Tome" placeholder="Tome" /><br />
+    <label asp-for="Input.Chapter"></label><br /><input asp-for="Input.Chapter" placeholder="ChapterNumber" /><br />
+    <input asp-for="Input.Images" placeholder="Image" multiple /><br />
+    <button type="submit">Add page</button>
+</form>
+</section>

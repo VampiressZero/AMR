@@ -30,5 +30,6 @@ namespace AMR_Project.Models
         public String Painter { get; set; }
         public String Publisher { get; set; }
         public MangaTranslator Translator { get; set; }
+        public List<MangaChapter> MangaChapters { get; set; }
     }
 }
