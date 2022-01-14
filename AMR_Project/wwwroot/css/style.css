@@ -487,11 +487,19 @@ a{
     padding: 5px 10px;
     max-width: 300px;
 }
-.qq{
-    width: 120px;
-    max-width: 300px;
-}
 
+
+.sliderForReading{
+    margin-top: 25px;
+    display: grid;
+    justify-content: center;
+
+    
+}
+.sliderForReading-img{
+    height: 100vh;
+    
+}
 
 
 
